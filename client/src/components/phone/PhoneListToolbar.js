@@ -17,17 +17,11 @@ const CustomerListToolbar = (props) => (
         justifyContent: 'flex-end'
       }}
     >
-      <Button>
-        Import
-      </Button>
-      <Button sx={{ mx: 1 }}>
-        Export
-      </Button>
       <Button
         color="primary"
         variant="contained"
       >
-        Add customer
+        Add phone
       </Button>
     </Box>
     <Box sx={{ mt: 3 }}>
@@ -48,7 +42,7 @@ const CustomerListToolbar = (props) => (
                   </InputAdornment>
                 )
               }}
-              placeholder="Search customer"
+              placeholder="Search Phone"
               variant="outlined"
             />
           </Box>

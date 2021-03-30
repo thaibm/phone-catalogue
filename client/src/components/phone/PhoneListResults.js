@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Checkbox,
   Table,
@@ -15,6 +15,10 @@ import {
   TableRow,
   Typography
 } from '@material-ui/core';
+import {
+  Edit as EditIcon,
+  Trash2 as DeleteIcon,
+} from 'react-feather';
 import getInitials from 'src/utils/getInitials';
 
 const CustomerListResults = ({ customers, ...rest }) => {
@@ -84,23 +88,31 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   Name
                 </TableCell>
                 <TableCell>
-                  Email
+                  Manufacturer
                 </TableCell>
                 <TableCell>
-                  Location
+                  Color
                 </TableCell>
                 <TableCell>
-                  Phone
+                  Price
                 </TableCell>
                 <TableCell>
-                  Registration date
+                  Screen
+                </TableCell>
+                <TableCell>
+                  Processor
+                </TableCell>
+                <TableCell>
+                  Ram
+                </TableCell>
+                <TableCell align="center">
+                  Action
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {customers.slice(0, limit).map((customer) => (
                 <TableRow
-                  hover
                   key={customer.id}
                   selected={selectedCustomerIds.indexOf(customer.id) !== -1}
                 >
@@ -133,16 +145,34 @@ const CustomerListResults = ({ customers, ...rest }) => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.email}
+                    {customer.manufacturer}
                   </TableCell>
                   <TableCell>
-                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                    {customer.color}
                   </TableCell>
                   <TableCell>
-                    {customer.phone}
+                    {customer.price}
                   </TableCell>
                   <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                    {customer.screen}
+                  </TableCell>
+                  <TableCell>
+                    {customer.processor}
+                  </TableCell>
+                  <TableCell>
+                    {customer.ram}
+                  </TableCell>
+                  <TableCell align="center">
+                    <Button
+                      color="primary"
+                    >
+                      <EditIcon />
+                    </Button>
+                    <Button
+                      color="secondary"
+                    >
+                      <DeleteIcon />
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}

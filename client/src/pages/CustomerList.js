@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
-import CustomerListResults from 'src/components/customer/CustomerListResults';
-import CustomerListToolbar from 'src/components/customer/CustomerListToolbar';
+import CustomerListResults from 'src/components/phone/PhoneListResults';
+import CustomerListToolbar from 'src/components/phone/PhoneListToolbar';
 import customers from 'src/__mocks__/customers';
 
 const CustomerList = () => (
