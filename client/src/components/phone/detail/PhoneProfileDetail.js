@@ -149,9 +149,12 @@ const PhoneProfileDetail = () => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.manufacturer && errors.manufacturer)}
                           fullWidth
+                          helperText={touched.manufacturer && errors.manufacturer}
                           label="manufacturer"
                           name="manufacturer"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           value={values.manufacturer}
@@ -164,9 +167,12 @@ const PhoneProfileDetail = () => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.color && errors.color)}
                           fullWidth
+                          helperText={touched.color && errors.color}
                           label="Color"
                           name="color"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           value={values.color}
@@ -197,9 +203,12 @@ const PhoneProfileDetail = () => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.description && errors.description)}
                           fullWidth
+                          helperText={touched.description && errors.description}
                           label="Description"
                           name="description"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           value={values.description}
@@ -215,6 +224,7 @@ const PhoneProfileDetail = () => {
                           fullWidth
                           label="Select Screen"
                           name="screen"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           select
@@ -238,9 +248,12 @@ const PhoneProfileDetail = () => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.processor && errors.processor)}
                           fullWidth
+                          helperText={touched.processor && errors.processor}
                           label="Processor"
                           name="processor"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           value={values.processor}
@@ -253,9 +266,12 @@ const PhoneProfileDetail = () => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.ram && errors.ram)}
                           fullWidth
+                          helperText={touched.ram && errors.ram}
                           label="Ram"
                           name="ram"
+                          onBlur={handleBlur}
                           onChange={handleChange}
                           required
                           value={values.ram}
@@ -276,6 +292,7 @@ const PhoneProfileDetail = () => {
                       color="primary"
                       disabled={isSubmitting}
                       variant="contained"
+                      type="submit"
                     >
                       Save details
                     </Button>
