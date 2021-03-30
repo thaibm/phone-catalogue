@@ -10,6 +10,7 @@ import ProductList from 'src/pages/ProductList';
 import Register from 'src/pages/Register';
 import Settings from 'src/pages/Settings';
 import PhoneDetail from 'src/pages/PhoneDetail';
+import PhoneCreation from './components/phone/creation/PhoneCreation';
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
       { path: 'account', element: <Account /> },
       { path: 'phones', element: <PhoneList /> },
       { path: 'phones/detail/:id', element: <PhoneDetail /> },
+      { path: 'phones/create', element: <PhoneCreation /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'products', element: <ProductList /> },
       { path: 'settings', element: <Settings /> },

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
   NavLink as RouterLink
 } from 'react-router-dom';
@@ -23,11 +23,19 @@ import {
   Trash2 as DeleteIcon,
 } from 'react-feather';
 import getInitials from 'src/utils/getInitials';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const PhoneListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
@@ -69,132 +77,156 @@ const PhoneListResults = ({ customers, ...rest }) => {
     setPage(newPage);
   };
 
+  const handleDelete = () => {
+    setOpen(true);
+  };
+
   return (
-    <Card {...rest}>
-      <PerfectScrollbar>
-        <Box sx={{ minWidth: 1050 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
-                    color="primary"
-                    indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
-                    }
-                    onChange={handleSelectAll}
-                  />
-                </TableCell>
-                <TableCell>
-                  Name
-                </TableCell>
-                <TableCell>
-                  Manufacturer
-                </TableCell>
-                <TableCell>
-                  Color
-                </TableCell>
-                <TableCell>
-                  Price
-                </TableCell>
-                <TableCell>
-                  Screen
-                </TableCell>
-                <TableCell>
-                  Processor
-                </TableCell>
-                <TableCell>
-                  Ram
-                </TableCell>
-                <TableCell align="center">
-                  Action
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {customers.slice(0, limit).map((customer) => (
-                <TableRow
-                  key={customer.id}
-                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
-                >
+    <>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">Delete it, Are you sure.</DialogTitle>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleClose} color="primary" autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Card {...rest}>
+        <PerfectScrollbar>
+          <Box sx={{ minWidth: 1050 }}>
+            <Table>
+              <TableHead>
+                <TableRow>
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
-                      value="true"
+                      checked={selectedCustomerIds.length === customers.length}
+                      color="primary"
+                      indeterminate={
+                        selectedCustomerIds.length > 0
+                        && selectedCustomerIds.length < customers.length
+                      }
+                      onChange={handleSelectAll}
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex'
-                      }}
-                    >
-                      <Avatar
-                        src={customer.avatarUrl}
-                        sx={{ mr: 2 }}
-                      >
-                        {getInitials(customer.name)}
-                      </Avatar>
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
-                        {customer.name}
-                      </Typography>
-                    </Box>
+                    Name
                   </TableCell>
                   <TableCell>
-                    {customer.manufacturer}
+                    Manufacturer
                   </TableCell>
                   <TableCell>
-                    {customer.color}
+                    Color
                   </TableCell>
                   <TableCell>
-                    {customer.price}
+                    Price
                   </TableCell>
                   <TableCell>
-                    {customer.screen}
+                    Screen
                   </TableCell>
                   <TableCell>
-                    {customer.processor}
+                    Processor
                   </TableCell>
                   <TableCell>
-                    {customer.ram}
+                    Ram
                   </TableCell>
                   <TableCell align="center">
-                    <Button
-                      component={RouterLink}
-                      color="primary"
-                      to={`/app/phones/detail/${customer.id}`}
-                    >
-                      <EditIcon />
-                    </Button>
-                    <Button
-                      color="secondary"
-                    >
-                      <DeleteIcon />
-                    </Button>
+                    Action
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Box>
-      </PerfectScrollbar>
-      <TablePagination
-        component="div"
-        count={customers.length}
-        onPageChange={handlePageChange}
-        onRowsPerPageChange={handleLimitChange}
-        page={page}
-        rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25]}
-      />
-    </Card>
+              </TableHead>
+              <TableBody>
+                {customers.slice(0, limit).map((customer) => (
+                  <TableRow
+                    key={customer.id}
+                    selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                        onChange={(event) => handleSelectOne(event, customer.id)}
+                        value="true"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <Box
+                        sx={{
+                          alignItems: 'center',
+                          display: 'flex'
+                        }}
+                      >
+                        <Avatar
+                          src={customer.avatarUrl}
+                          sx={{ mr: 2 }}
+                        >
+                          {getInitials(customer.name)}
+                        </Avatar>
+                        <Typography
+                          color="textPrimary"
+                          variant="body1"
+                        >
+                          {customer.name}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell>
+                      {customer.manufacturer}
+                    </TableCell>
+                    <TableCell>
+                      {customer.color}
+                    </TableCell>
+                    <TableCell>
+                      {customer.price}
+                    </TableCell>
+                    <TableCell>
+                      {customer.screen}
+                    </TableCell>
+                    <TableCell>
+                      {customer.processor}
+                    </TableCell>
+                    <TableCell>
+                      {customer.ram}
+                    </TableCell>
+                    <TableCell align="center">
+                      <Button
+                        component={RouterLink}
+                        color="primary"
+                        to={`/app/phones/detail/${customer.id}`}
+                      >
+                        <EditIcon />
+                      </Button>
+                      <Button
+                        color="secondary"
+                        onClick={handleDelete}
+                      >
+                        <DeleteIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Box>
+        </PerfectScrollbar>
+        <TablePagination
+          component="div"
+          count={customers.length}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleLimitChange}
+          page={page}
+          rowsPerPage={limit}
+          rowsPerPageOptions={[5, 10, 25]}
+        />
+      </Card>
+    </>
+
   );
 };
 

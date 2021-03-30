@@ -7,6 +7,9 @@ import {
   InputAdornment,
   SvgIcon
 } from '@material-ui/core';
+import {
+  NavLink as RouterLink
+} from 'react-router-dom';
 import { Search as SearchIcon } from 'react-feather';
 
 const PhoneListToolbar = (props) => (
@@ -18,8 +21,10 @@ const PhoneListToolbar = (props) => (
       }}
     >
       <Button
+        component={RouterLink}
         color="primary"
         variant="contained"
+        to="/app/phones/create"
       >
         Add phone
       </Button>
