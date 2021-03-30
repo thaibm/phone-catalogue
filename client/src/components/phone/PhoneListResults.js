@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import {
+  NavLink as RouterLink
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
@@ -21,7 +24,7 @@ import {
 } from 'react-feather';
 import getInitials from 'src/utils/getInitials';
 
-const CustomerListResults = ({ customers, ...rest }) => {
+const PhoneListResults = ({ customers, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -164,7 +167,9 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   </TableCell>
                   <TableCell align="center">
                     <Button
+                      component={RouterLink}
                       color="primary"
+                      to={`/app/phones/detail/${customer.id}`}
                     >
                       <EditIcon />
                     </Button>
@@ -193,8 +198,8 @@ const CustomerListResults = ({ customers, ...rest }) => {
   );
 };
 
-CustomerListResults.propTypes = {
+PhoneListResults.propTypes = {
   customers: PropTypes.array.isRequired
 };
 
-export default CustomerListResults;
+export default PhoneListResults;
