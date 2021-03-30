@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Avatar,
@@ -12,13 +12,6 @@ import {
 } from '@material-ui/core';
 import {
   AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  // Users as UsersIcon,
   List as ListsIcon
 } from 'react-feather';
 import NavItem from './NavItem';
@@ -31,39 +24,9 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
-    icon: BarChartIcon,
-    title: 'Dashboard'
-  },
-  {
     href: '/app/phones',
     icon: ListsIcon,
     title: 'Phones'
-  },
-  {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
   },
   {
     href: '/404',
@@ -98,14 +61,12 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         }}
       >
         <Avatar
-          component={RouterLink}
           src={user.avatar}
           sx={{
             cursor: 'pointer',
             width: 64,
             height: 64
           }}
-          to="/app/account"
         />
         <Typography
           color="textPrimary"

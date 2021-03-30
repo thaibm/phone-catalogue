@@ -10,7 +10,8 @@ import {
   TextField,
   Container,
   CardActionArea,
-  CardMedia
+  CardMedia,
+  Input
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -57,13 +58,10 @@ const PhoneForm = ({ phone }) => {
             </CardContent>
             <Divider />
             <CardActions>
-              <Button
-                color="primary"
-                fullWidth
-                variant="text"
-              >
-                Upload picture
-              </Button>
+              <Input type="file" id="upload" style={{ display: 'none' }} />
+              <label htmlFor="upload" fullWidth color="primary" variant="text">
+                Upload
+              </label>
             </CardActions>
           </Card>
         </Grid>
@@ -76,7 +74,7 @@ const PhoneForm = ({ phone }) => {
           <Formik
             initialValues={phone}
             validationSchema={Yup.object().shape({
-              name: Yup.string().max(50).required('name is required'),
+              name: Yup.string().typeError('name must be string!').max(50).required('name is required'),
               description: Yup.string().max(255).required('Description is required'),
               manufacturer: Yup.string().max(255).required('Manufacturer is required'),
               color: Yup.string().max(255).required('Color is required'),
@@ -103,7 +101,7 @@ const PhoneForm = ({ phone }) => {
                 onSubmit={handleSubmit}
               >
                 <Card>
-                  {phone ? (
+                  {phone.name ? (
                     <CardHeader
                       subheader="The information can be edited"
                       title="Detail"
