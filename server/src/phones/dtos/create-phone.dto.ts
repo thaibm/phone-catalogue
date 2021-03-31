@@ -3,10 +3,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePhoneDto {
   @ApiProperty()
-  @IsNumber()
-  id: number;
-
-  @ApiProperty()
   @IsString()
   model: string;
 

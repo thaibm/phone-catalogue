@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 
 import { DBModule } from '../db/db.module';
-import { PhonesController } from './phones.controller';
-import { PhonesService } from './phones.service';
-import { phoneProviders } from './phone.providers';
+import { PhonesController } from './controllers/phones.controller';
+import { PhonesService } from './services/phones.service';
+import { PhoneRepository } from './repositories/phone.repository';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [DBModule],
+  imports: [DBModule, TypeOrmModule.forFeature([PhoneRepository])],
   controllers: [PhonesController],
   providers: [
-    ...phoneProviders,
+    PhoneRepository,
     PhonesService,
   ],
 })
