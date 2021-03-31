@@ -9,9 +9,6 @@ export class Phone {
   model: string;
 
   @Column()
-  email: string;
-
-  @Column()
   brand: string;
 
   @Column()

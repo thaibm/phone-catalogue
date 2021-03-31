@@ -6,14 +6,16 @@ import {
   Param,
   Post,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import * as slug from 'slug';
 
-import { Phone } from './phone.interface';
+import { Phone } from '../phone.interface';
 import { ApiTags, ApiCreatedResponse, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
-import { CreatePhoneDto } from './create-phone.dto';
-import { PhonesService } from './phones.service';
-import { PhoneDto } from './phone.dto';
+import { CreatePhoneDto } from '../dtos/create-phone.dto';
+import { PhonesService } from '../services/phones.service';
+import { PhoneDto } from '../dtos/phone.dto';
+import { WrappedResponseInterceptor } from '../../interceptors/WrappedResponseInterceptor';
 
 @Controller('phones')
 @ApiTags('phones')
@@ -28,6 +30,7 @@ export class PhonesController {
     type: PhoneDto,
     isArray: true,
   })
+  @UseInterceptors(WrappedResponseInterceptor)
   async findAll(): Promise<PhoneDto[]> {
     return this.phonesService.findAll();
   }
@@ -41,12 +44,12 @@ export class PhonesController {
     type: PhoneDto,
     isArray: false,
   })
+  @UseInterceptors(WrappedResponseInterceptor)
   async findById(@Param() phoneId): Promise<PhoneDto> {
     return this.phonesService.findById(phoneId);
   }
 
   @Post()
-
   @ApiOperation({
     description: 'Create new phone',
   })
@@ -56,7 +59,7 @@ export class PhonesController {
   })
   async create(@Body() createPhoneDto: CreatePhoneDto) {
     const newEntry = Object.assign({}, createPhoneDto);
-    await this.phonesService.create(newEntry);
+    return await this.phonesService.create(newEntry);
   }
 
   @Delete(':phoneId')
