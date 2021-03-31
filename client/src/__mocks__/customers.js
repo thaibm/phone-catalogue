@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 export default [
   {
     id: uuid(),
-    name: 'iPhone 7',
+    name: 'iPhone 5',
     manufacturer: 'Apple',
     description: 'lorem ipsum dolor sit amet consectetur.',
     color: 'black',
