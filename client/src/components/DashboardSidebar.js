@@ -24,7 +24,7 @@ const user = {
 
 const items = [
   {
-    href: '/app/phones',
+    href: '/',
     icon: ListsIcon,
     title: 'Phones'
   },
