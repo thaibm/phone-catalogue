@@ -1,7 +1,7 @@
 /*  eslint-env es6  */
 import { combineReducers } from 'redux';
 import { createSelector } from 'reselect';
-import phoneList, { fetchPhone } from './phoneList';
+import phoneList, { fetchPhone, deletePhone } from './phoneList';
 
 export default combineReducers({
   phoneList,
@@ -31,6 +31,7 @@ const selectPhonesLoading = createSelector(
 
 export const phonesActions = {
   fetchPhone,
+  deletePhone
 };
 
 export const phonesSelectors = {

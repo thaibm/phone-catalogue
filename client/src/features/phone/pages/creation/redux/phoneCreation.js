@@ -3,12 +3,14 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
+import { createPhone as createPhoneAPI } from 'src/features/redux/api/phoneApi';
 
 export const createNewPhone = createAsyncThunk(
   'phones/fetchPhoneDetail',
-  async (payload, { rejectWithValue }) => {
+  async ({ id, payload }, { rejectWithValue }) => {
     try {
-      return payload;
+      const response = await createPhoneAPI({ id, payload });
+      return response;
     } catch (err) {
       console.error(err);
       return rejectWithValue({
