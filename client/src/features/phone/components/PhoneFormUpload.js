@@ -29,7 +29,7 @@ const PhoneFormUpload = ({ avatar, handleChangeFile }) => {
         <CardContent>
           <CardActionArea>
             <CardMedia
-              image={file !== null ? file : avatar || '/static/images/avatars/galery.png'}
+              image={file !== null ? file : avatar || '/static/images/avatars/phone.png'}
               style={{ height: '300px', backgroundSize: 'contain' }}
             />
           </CardActionArea>

@@ -9,8 +9,8 @@ export const fetchPhone = createAsyncThunk(
   'phones/fetchPhones',
   async (_, { rejectWithValue }) => {
     try {
-      const response = Promise.resolve(getPhoneList());
-      return response;
+      const response = await getPhoneList();
+      return response.data.data;
     } catch (err) {
       console.error(err);
       return rejectWithValue({
@@ -26,7 +26,7 @@ export const deletePhone = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const response = await deletePhoneAPI(id);
-      return response;
+      return response.data;
     } catch (err) {
       return rejectWithValue({
         message: 'Failed to fetch phone',

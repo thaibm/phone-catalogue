@@ -8,16 +8,16 @@ import {
   Drawer,
   Hidden,
   List,
-  Typography
+  // Typography
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
+  // AlertCircle as AlertCircleIcon,
   List as ListsIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
+  avatar: '/static/images/avatars/iphone7.jpg',
   jobTitle: 'Senior Developer',
   name: 'Katarina Smith'
 };
@@ -28,11 +28,6 @@ const items = [
     icon: ListsIcon,
     title: 'Phones'
   },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
-  }
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
@@ -68,7 +63,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
             height: 64
           }}
         />
-        <Typography
+        {/* <Typography
           color="textPrimary"
           variant="h5"
         >
@@ -79,7 +74,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           variant="body2"
         >
           {user.jobTitle}
-        </Typography>
+        </Typography> */}
       </Box>
       <Divider />
       <Box sx={{ p: 2 }}>

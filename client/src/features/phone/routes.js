@@ -14,17 +14,8 @@ const routes = [
       { path: '/detail/:id', element: <PhoneDetail /> },
       { path: '/create', element: <PhoneCreatePage /> },
       { path: '404', element: <NotFound /> },
-      // { path: '*', element: <Navigate to="/404" /> }
     ]
   },
-  // {
-  //   path: '/',
-  //   element: <DashboardLayout />,
-  //   children: [
-  //     { path: '404', element: <NotFound /> },
-  //     // { path: '*', element: <Navigate to="/404" /> }
-  //   ]
-  // }
 ];
 
 export default routes;

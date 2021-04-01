@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Box } from '@material-ui/core';
 import PhoneCreation from 'src/features/phone/pages/creation/PhoneCreation';
+import { PhoneCreatePageProvider } from './phoneCreationContext';
 
 const PhoneCreatePage = () => (
   <>
@@ -14,7 +15,9 @@ const PhoneCreatePage = () => (
         py: 3
       }}
     >
-      <PhoneCreation />
+      <PhoneCreatePageProvider>
+        <PhoneCreation />
+      </PhoneCreatePageProvider>
     </Box>
   </>
 );
