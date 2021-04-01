@@ -15,3 +15,15 @@ export async function getPhoneDetail(id) {
   console.log(id);
   return customers[0];
 }
+
+export async function deletePhone(id) {
+  console.log(id);
+}
+
+export async function createPhone(payload) {
+  console.log(payload);
+}
+
+export async function updatePhone({ id, payload }) {
+  console.log({ id, payload });
+}

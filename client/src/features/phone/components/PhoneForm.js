@@ -32,13 +32,19 @@ const screens = [
 
 const PhoneForm = ({ phone }) => {
   const navigate = useNavigate();
+  const onChangeFile = (file) => {
+    console.log(file);
+  };
   return (
     <Container maxWidth="lg">
       <Grid
         container
         spacing={3}
       >
-        <PhoneFormUpload avatar={phone?.avatarUrl} />
+        <PhoneFormUpload
+          avatar={phone?.avatarUrl}
+          handleChangeFile={onChangeFile}
+        />
         <Grid
           item
           lg={8}
