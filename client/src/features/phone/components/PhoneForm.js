@@ -10,31 +10,22 @@ import {
   Container,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { useState } from 'react';
 import PhoneFormUpload from './PhoneFormUpload';
 
-const screens = [
-  {
-    value: '4,7 inch IPS',
-    label: '4,7 inch IPS'
-  },
-  {
-    value: '5,7 inch IPS',
-    label: '4,7 inch IPS'
-  },
-  {
-    value: '6,7 inch IPS',
-    label: '4,7 inch IPS'
-  }
-];
-
-const PhoneForm = ({ phone }) => {
-  const navigate = useNavigate();
-  const onChangeFile = (file) => {
+const PhoneForm = ({ phone, onSubmit }) => {
+  const [file, setFile] = useState();
+  const onChangeFile = (avatar) => {
+    setFile(avatar);
     console.log(file);
   };
+
+  const onHandleSubmit = (values) => {
+    onSubmit(values);
+  };
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -64,16 +55,14 @@ const PhoneForm = ({ phone }) => {
               ram: Yup.string().max(255).required('Ram is required'),
               screen: Yup.string().max(255).required('Screen is required'),
             })}
-            onSubmit={() => {
-              navigate('/app/phones', { replace: true });
-            }}
+            onSubmit={onHandleSubmit}
           >
             {({
               errors,
               handleBlur,
               handleChange,
               handleSubmit,
-              isSubmitting,
+              // isSubmitting,
               touched,
               values
             }) => (
@@ -194,26 +183,17 @@ const PhoneForm = ({ phone }) => {
                         xs={12}
                       >
                         <TextField
+                          error={Boolean(touched.screen && errors.screen)}
                           fullWidth
-                          label="Select Screen"
+                          helperText={touched.screen && errors.screen}
+                          label="Screen"
                           name="screen"
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          select
-                          SelectProps={{ native: true }}
                           value={values?.screen || ''}
                           variant="outlined"
-                        >
-                          {screens.map((option) => (
-                            <option
-                              key={option.value}
-                              value={option.value}
-                            >
-                              {option.label}
-                            </option>
-                          ))}
-                        </TextField>
+                        />
                       </Grid>
                       <Grid
                         item
@@ -263,7 +243,7 @@ const PhoneForm = ({ phone }) => {
                   >
                     <Button
                       color="primary"
-                      disabled={isSubmitting}
+                      // disabled={isSubmitting}
                       variant="contained"
                       type="submit"
                     >
@@ -281,6 +261,7 @@ const PhoneForm = ({ phone }) => {
 };
 
 PhoneForm.propTypes = {
-  phone: PropTypes.any
+  phone: PropTypes.any,
+  onSubmit: PropTypes.any
 };
 export default PhoneForm;

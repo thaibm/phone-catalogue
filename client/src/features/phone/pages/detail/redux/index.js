@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { createSelector } from 'reselect';
-import phoneDetail, { fetchPhoneDetail } from './phoneDetail';
+import phoneDetail, { fetchPhoneDetail, phoneDetailSlice, UpdatePhone } from './phoneDetail';
 
 export default combineReducers({
   phoneDetail,
@@ -28,12 +28,20 @@ const selectPhoneDetailLoading = createSelector(
   (state) => state.phoneDetail.loading
 );
 
+const selectPhoneDetailProjectId = createSelector(
+  selectPhone,
+  (state) => state.phoneDetail.projectId
+);
+
 export const phoneDetailActions = {
   fetchPhoneDetail,
+  UpdatePhone,
+  resetDetail: phoneDetailSlice.actions.resetDetail
 };
 
 export const phoneDetailSelectors = {
   selectPhoneDetail,
   selectPhoneDetailError,
-  selectPhoneDetailLoading
+  selectPhoneDetailLoading,
+  selectPhoneDetailProjectId,
 };

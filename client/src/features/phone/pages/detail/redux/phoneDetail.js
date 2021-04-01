@@ -3,14 +3,14 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
-import { getPhoneDetail } from 'src/features/redux/api/phoneApi';
+import { getPhoneDetail, updatePhone } from 'src/features/redux/api/phoneApi';
 
 export const fetchPhoneDetail = createAsyncThunk(
   'phones/fetchPhoneDetail',
-  async ({ id }, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await Promise.resolve(getPhoneDetail(id));
-      return response;
+      const response = await getPhoneDetail(id);
+      return response.data.data;
     } catch (err) {
       console.error(err);
       return rejectWithValue({
@@ -21,14 +21,35 @@ export const fetchPhoneDetail = createAsyncThunk(
   }
 );
 
+export const UpdatePhone = createAsyncThunk(
+  'phone/updatePhone',
+  async ({ id, payload }, { rejectWithValue }) => {
+    try {
+      const response = await updatePhone({ id, payload });
+      return response.data.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+const defaultValue = {
+  loading: 'idle',
+  error: null,
+  phone: null,
+  projectId: null
+};
 export const phoneDetailSlice = createSlice({
   name: 'phoneDetail',
   initialState: {
     loading: 'idle',
     error: null,
     phone: null,
+    projectId: null
   },
-  reducers: {},
+  reducers: {
+    resetDetail: () => (defaultValue)
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPhoneDetail.pending, (state) => {
@@ -44,6 +65,21 @@ export const phoneDetailSlice = createSlice({
         state.loading = 'rejected';
         state.error = {
           message: 'Error while fetching phone'
+        };
+      });
+    builder
+      .addCase(UpdatePhone.pending, (state) => {
+        state.loading = 'pending';
+        state.error = null;
+      })
+      .addCase(UpdatePhone.fulfilled, (state) => {
+        state.loading = 'fulfilled';
+        state.error = null;
+      })
+      .addCase(UpdatePhone.rejected, (state) => {
+        state.loading = 'rejected';
+        state.error = {
+          message: 'Error while update phone'
         };
       });
   }

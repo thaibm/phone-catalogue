@@ -13,7 +13,8 @@ import { phoneDetailSelectors, phoneDetailActions } from './redux';
 const PhoneDetailPageContext = createContext({
   phone: null,
   error: null,
-  loading: null
+  loading: null,
+  handleUpdate: null
 });
 export const PhoneDetailPageProvider = ({ children }) => {
   const { id } = useParams();
@@ -22,20 +23,29 @@ export const PhoneDetailPageProvider = ({ children }) => {
   const loading = useSelector(phoneDetailSelectors.selectPhoneDetailLoading);
   const dispatch = useDispatch();
 
+  const handleUpdate = async (values) => {
+    await dispatch(phoneDetailActions.UpdatePhone({ id, payload: values }));
+  };
+
   const contextValue = useMemo(
     () => ({
       phone,
       error,
-      loading
+      loading,
+      handleUpdate
     }),
     [
       phone,
       error,
-      loading
+      loading,
+      handleUpdate
     ]
   );
   useEffect(() => {
-    dispatch(phoneDetailActions.fetchPhoneDetail({ id }));
+    dispatch(phoneDetailActions.fetchPhoneDetail(id));
+    return () => {
+      dispatch(phoneDetailActions.resetDetail());
+    };
   }, [id]);
 
   return (

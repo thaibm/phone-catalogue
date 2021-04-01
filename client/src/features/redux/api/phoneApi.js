@@ -1,29 +1,27 @@
-// import * as yup from 'yup';
-import customers from 'src/__mocks__/customers';
+import * as yup from 'yup';
+import axiosAPI from './axiosAPI';
 
 export async function getPhoneList() {
-  // const response = Promise.resolve(customers);
-  // if (typeof response.data !== 'object') {
-  //   throw new Error('expected object value but got string');
-  // }
-  return customers;
+  const response = axiosAPI.get('v1/phones');
+  return response;
 }
 
 export async function getPhoneDetail(id) {
-  // yup.number().integer().validate(id);
-  // const response = await customers.find((phone) => phone.id === id);
-  console.log(id);
-  return customers[0];
+  yup.number().integer().validate(id);
+  const response = axiosAPI.get(`v1/phones/${id}`);
+  return response;
 }
 
 export async function deletePhone(id) {
-  console.log(id);
+  const response = axiosAPI.delete(`v1/phones/${id}`);
+  return response;
 }
-
 export async function createPhone(payload) {
-  console.log(payload);
+  const response = axiosAPI.post('v1/phones', payload);
+  return response;
 }
 
 export async function updatePhone({ id, payload }) {
-  console.log({ id, payload });
+  const response = axiosAPI.put(`v1/phones/${id}`, payload);
+  return response;
 }

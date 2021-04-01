@@ -1,12 +1,9 @@
-import axios from "axios";
-
-const baseURL = process.env.API_URL;
+import axios from 'axios';
 
 const axiosAPI = axios.create({
-  baseURL: baseURL,
-  timeout: 50000,
+  baseURL: 'http://localhost:3000/api/',
   headers: {
-    accept: "application/json",
+    accept: 'application/json',
   },
 });
 

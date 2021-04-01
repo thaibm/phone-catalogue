@@ -26,6 +26,7 @@ export const PhoneListPageProvider = ({ children }) => {
 
   const deletePhone = async (id) => {
     await dispatch(phonesActions.deletePhone(id));
+    await dispatch(phonesActions.fetchPhone());
   };
 
   const contextValue = useMemo(

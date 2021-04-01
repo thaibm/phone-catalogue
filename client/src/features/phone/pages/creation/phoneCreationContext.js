@@ -14,13 +14,13 @@ const PhoneCreatePageContext = createContext({
   createPhone: null
 });
 export const PhoneCreatePageProvider = ({ children }) => {
-  const phone = useSelector(phoneSelectors.selectPhoneDetail);
-  const error = useSelector(phoneSelectors.selectPhoneDetailError);
-  const loading = useSelector(phoneSelectors.selectPhoneDetailLoading);
+  const phone = useSelector(phoneSelectors.selectPhoneCreateForm);
+  const error = useSelector(phoneSelectors.selectPhoneCreationError);
+  const loading = useSelector(phoneSelectors.selectPhoneCreationLoading);
   const dispatch = useDispatch();
 
-  const createPhone = async (phone) => {
-    await dispatch(phoneActions.createNewPhone(phone));
+  const createPhone = async (values) => {
+    await dispatch(phoneActions.createNewPhone(values));
   };
 
   const contextValue = useMemo(
