@@ -6,6 +6,7 @@ import React, {
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { phoneActions, phoneSelectors } from './redux';
+import { useCallback } from 'react';
 
 const PhoneCreatePageContext = createContext({
   phone: null,
@@ -19,9 +20,9 @@ export const PhoneCreatePageProvider = ({ children }) => {
   const loading = useSelector(phoneSelectors.selectPhoneCreationLoading);
   const dispatch = useDispatch();
 
-  const createPhone = async (values) => {
-    await dispatch(phoneActions.createNewPhone(values));
-  };
+  const createPhone = useCallback((values) => {
+    dispatch(phoneActions.createNewPhone(values));
+  });
 
   const contextValue = useMemo(
     () => ({

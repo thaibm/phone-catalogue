@@ -25,3 +25,15 @@ export async function updatePhone({ id, payload }) {
   const response = axiosAPI.put(`v1/phones/${id}`, payload);
   return response;
 }
+
+export async function deletePhone(id) {
+  console.log(id);
+}
+
+export async function createPhone(payload) {
+  console.log(payload);
+}
+
+export async function updatePhone({ id, payload }) {
+  console.log({ id, payload });
+}
