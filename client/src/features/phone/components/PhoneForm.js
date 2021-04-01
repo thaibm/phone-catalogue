@@ -101,11 +101,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.name || ''}
-=======
                           value={values.name}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -123,11 +119,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.manufacturer || ''}
-=======
                           value={values.manufacturer}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -145,11 +137,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.color || ''}
-=======
                           value={values.color}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -167,11 +155,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           type="number"
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.price || ''}
-=======
                           value={values.price}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -189,11 +173,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.description || ''}
-=======
                           value={values.description}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -213,11 +193,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           required
                           select
                           SelectProps={{ native: true }}
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.screen || ''}
-=======
                           value={values.screen}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -235,11 +211,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.processor || ''}
-=======
                           value={values.processor}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
@@ -257,11 +229,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-<<<<<<< HEAD:client/src/features/phone/components/PhoneForm.js
-                          value={values?.ram || ''}
-=======
                           value={values.ram}
->>>>>>> 575bacc (adding docker):client/src/components/phone/components/phoneForm.js
                           variant="outlined"
                         />
                       </Grid>
