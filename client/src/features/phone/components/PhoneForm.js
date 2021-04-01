@@ -101,7 +101,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.name}
+                          value={values?.name || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -119,7 +119,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.manufacturer}
+                          value={values?.manufacturer || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -137,7 +137,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.color}
+                          value={values?.color || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -155,7 +155,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           type="number"
-                          value={values.price}
+                          value={values?.price || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -173,7 +173,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.description}
+                          value={values?.description || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -193,7 +193,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           required
                           select
                           SelectProps={{ native: true }}
-                          value={values.screen}
+                          value={values?.screen || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -211,7 +211,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.processor}
+                          value={values?.processor || ''}
                           variant="outlined"
                         />
                       </Grid>
@@ -229,7 +229,7 @@ const PhoneForm = ({ phone, onSubmit }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values.ram}
+                          value={values?.ram || ''}
                           variant="outlined"
                         />
                       </Grid>

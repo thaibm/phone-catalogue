@@ -165,7 +165,7 @@ const PhoneListResults = ({ ...rest }) => {
           </PerfectScrollbar>
           <TablePagination
             component="div"
-            count={phones?.length || 0}
+            count={phones.length || 0}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleLimitChange}
             page={page}

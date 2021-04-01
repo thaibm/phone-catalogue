@@ -1,5 +1,4 @@
 import PhoneForm from 'src/features/phone/components/PhoneForm';
-import { usePhoneCreatePage } from './phoneCreationContext';
 
 const initialValue = {
   avatarUrl: null,
@@ -13,15 +12,8 @@ const initialValue = {
   processor: '',
   ram: '',
 };
-
-const PhoneCreation = () => {
-  const { createPhone } = usePhoneCreatePage();
-  const onCreate = (values) => {
-    createPhone(values);
-  };
-  return (
-    <PhoneForm phone={initialValue} onSubmit={onCreate} />
-  );
-};
+const PhoneCreation = () => (
+  <PhoneForm phone={initialValue} />
+);
 
 export default PhoneCreation;

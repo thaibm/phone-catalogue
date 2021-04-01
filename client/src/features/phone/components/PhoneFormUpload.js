@@ -10,13 +10,10 @@ import {
   Button
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
-const PhoneFormUpload = ({ avatar, handleChangeFile }) => {
-  const [file, setFile] = useState(null);
-  const handleUpload = (event) => {
-    handleChangeFile(event.target.files[0]);
-    setFile(URL.createObjectURL(event.target.files[0]));
+const PhoneFormUpload = ({ avatar }) => {
+  const handleUpload = () => {
+
   };
   return (
     <Grid
@@ -29,7 +26,7 @@ const PhoneFormUpload = ({ avatar, handleChangeFile }) => {
         <CardContent>
           <CardActionArea>
             <CardMedia
-              image={file !== null ? file : avatar || '/static/images/avatars/phone.png'}
+              image={avatar || '/static/images/avatars/galery.png'}
               style={{ height: '300px', backgroundSize: 'contain' }}
             />
           </CardActionArea>
@@ -37,8 +34,8 @@ const PhoneFormUpload = ({ avatar, handleChangeFile }) => {
         <Divider />
         <CardActions>
           <label htmlFor="upload" style={{ margin: '0 auto' }}>
-            <Input type="file" id="upload" style={{ display: 'none' }} onChange={handleUpload} />
-            <Button variant="contained" component="span">
+            <Input type="file" id="upload" style={{ display: 'none' }} />
+            <Button variant="contained" component="span" onClick={handleUpload}>
               Upload Image
             </Button>
           </label>
@@ -49,7 +46,6 @@ const PhoneFormUpload = ({ avatar, handleChangeFile }) => {
 };
 
 PhoneFormUpload.propTypes = {
-  avatar: PropTypes.string,
-  handleChangeFile: PropTypes.any
+  avatar: PropTypes.string
 };
 export default PhoneFormUpload;
