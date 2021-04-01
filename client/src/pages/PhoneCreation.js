@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { Box } from '@material-ui/core';
 import PhoneCreation from 'src/components/phone/creation/PhoneCreation';
-import { Phone } from 'react-feather';
 
 const PhoneCreate = () => (
   <>

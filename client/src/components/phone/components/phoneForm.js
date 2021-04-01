@@ -51,7 +51,7 @@ const PhoneForm = ({ phone }) => {
             <CardContent>
               <CardActionArea>
                 <CardMedia
-                  image={phone?.avatarUrl || '/static/images/avatars/galery.png'}
+                  image={phone.avatarUrl || '/static/images/avatars/galery.png'}
                   style={{ height: '300px', backgroundSize: 'contain' }}
                 />
               </CardActionArea>
@@ -131,7 +131,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.name}
+                          value={values.name}
                           variant="outlined"
                         />
                       </Grid>
@@ -149,7 +149,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.manufacturer}
+                          value={values.manufacturer}
                           variant="outlined"
                         />
                       </Grid>
@@ -167,7 +167,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.color}
+                          value={values.color}
                           variant="outlined"
                         />
                       </Grid>
@@ -185,7 +185,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           type="number"
-                          value={values?.price}
+                          value={values.price}
                           variant="outlined"
                         />
                       </Grid>
@@ -203,7 +203,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.description}
+                          value={values.description}
                           variant="outlined"
                         />
                       </Grid>
@@ -221,7 +221,7 @@ const PhoneForm = ({ phone }) => {
                           required
                           select
                           SelectProps={{ native: true }}
-                          value={values?.screen}
+                          value={values.screen}
                           variant="outlined"
                         >
                           {screens.map((option) => (
@@ -248,7 +248,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.processor}
+                          value={values.processor}
                           variant="outlined"
                         />
                       </Grid>
@@ -266,7 +266,7 @@ const PhoneForm = ({ phone }) => {
                           onBlur={handleBlur}
                           onChange={handleChange}
                           required
-                          value={values?.ram}
+                          value={values.ram}
                           variant="outlined"
                         />
                       </Grid>

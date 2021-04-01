@@ -1,7 +1,7 @@
 {
-  "name": "rest-nestjs-postgres",
+  "name": "phone-catalogue-api",
   "version": "1.0.0",
-  "description": "CrudJS implemented as a REST API, using Nest and Postgres",
+  "description": "Phone catalogue api",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
