@@ -3,7 +3,7 @@ import {
   createSlice,
   createAsyncThunk
 } from '@reduxjs/toolkit';
-import { getPhoneList } from 'src/features/redux/api/phoneApi';
+import { getPhoneList, deletePhone as deletePhoneAPI } from 'src/features/redux/api/phoneApi';
 
 export const fetchPhone = createAsyncThunk(
   'phones/fetchPhones',
@@ -15,6 +15,21 @@ export const fetchPhone = createAsyncThunk(
       console.error(err);
       return rejectWithValue({
         message: 'Failed to fetch phones',
+        description: err.message
+      });
+    }
+  }
+);
+
+export const deletePhone = createAsyncThunk(
+  'phone/deletePhone',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await deletePhoneAPI(id);
+      return response;
+    } catch (err) {
+      return rejectWithValue({
+        message: 'Failed to fetch phone',
         description: err.message
       });
     }
@@ -44,6 +59,21 @@ export const phoneSlice = createSlice({
         state.loading = 'rejected';
         state.error = {
           message: 'Error while fetching phones'
+        };
+      });
+    builder
+      .addCase(deletePhone.pending, (state) => {
+        state.loading = 'pending';
+        state.error = null;
+      })
+      .addCase(deletePhone.fulfilled, (state) => {
+        state.loading = 'fulfilled';
+        state.error = null;
+      })
+      .addCase(deletePhone.rejected, (state) => {
+        state.loading = 'rejected';
+        state.error = {
+          message: 'Error while delete phones'
         };
       });
   }

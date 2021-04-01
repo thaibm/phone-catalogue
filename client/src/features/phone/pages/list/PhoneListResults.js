@@ -35,7 +35,7 @@ const PhoneListResults = ({ ...rest }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [open, setOpen] = React.useState(false);
-  const { phones, isLoading } = usePhoneListPage();
+  const { phones, isLoading, deletePhone } = usePhoneListPage();
 
   const handleClose = () => {
     setOpen(false);
@@ -55,8 +55,8 @@ const PhoneListResults = ({ ...rest }) => {
   };
 
   const handleDelete = () => {
+    deletePhone(phoneId);
     setOpen(false);
-    console.log(phoneId);
   };
   return (
     <>

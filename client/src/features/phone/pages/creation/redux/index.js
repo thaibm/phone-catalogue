@@ -10,7 +10,12 @@ const selectSelf = (state) => state;
 
 const selectPhoneCreation = createSelector(
   selectSelf,
-  (state) => state.phone
+  (state) => state.phoneCreation
+);
+
+const selectPhoneCreateForm = createSelector(
+  selectPhoneCreation,
+  (state) => state.phoneCreation
 );
 
 const selectPhoneCreationError = createSelector(
@@ -29,6 +34,7 @@ export const phoneActions = {
 
 export const phoneSelectors = {
   selectPhoneCreation,
+  selectPhoneCreateForm,
   selectPhoneCreationError,
   selectPhoneCreationLoading
 };

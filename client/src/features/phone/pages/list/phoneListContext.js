@@ -14,7 +14,8 @@ const PhoneListPageContext = createContext({
   phones: null,
   error: null,
   loading: null,
-  isLoading: null
+  isLoading: null,
+  deletePhone: null
 });
 export const PhoneListPageProvider = ({ children }) => {
   const phones = useSelector(phonesSelectors.selectPhonesInPhoneList);
@@ -23,28 +24,32 @@ export const PhoneListPageProvider = ({ children }) => {
   const dispatch = useDispatch();
   const [isLoading, setLoading] = useState(true);
 
+  const deletePhone = async (id) => {
+    await dispatch(phonesActions.deletePhone(id));
+  };
+
   const contextValue = useMemo(
     () => ({
       phones,
       error,
       loading,
-      isLoading
+      isLoading,
+      deletePhone
     }),
     [
       phones,
       error,
       loading,
-      isLoading
+      isLoading,
+      deletePhone
     ]
   );
   useEffect(() => {
-    if (loading === 'idle') {
-      setTimeout(() => {
-        setLoading(false);
-        dispatch(phonesActions.fetchPhone());
-      }, 500);
-    }
-  }, [loading]);
+    setTimeout(() => {
+      setLoading(false);
+      dispatch(phonesActions.fetchPhone());
+    }, 500);
+  }, [dispatch]);
 
   return (
     <PhoneListPageContext.Provider value={contextValue}>
