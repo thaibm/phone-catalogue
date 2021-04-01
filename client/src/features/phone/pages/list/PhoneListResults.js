@@ -97,66 +97,67 @@ const PhoneListResults = ({ ...rest }) => {
                 </TableHead>
                 <TableBody>
                   {phones ? (
-                    phones.map((phone) => (
-                      <TableRow
-                        key={phone.id}
-                      >
-                        <TableCell>
-                          <Box
-                            sx={{
-                              alignItems: 'center',
-                              display: 'flex'
-                            }}
-                          >
-                            <Avatar
-                              src={phone.avatarUrl}
-                              sx={{ mr: 2 }}
+                    phones.slice(page * limit, page * limit + limit)
+                      .map((phone) => (
+                        <TableRow
+                          key={phone.id}
+                        >
+                          <TableCell>
+                            <Box
+                              sx={{
+                                alignItems: 'center',
+                                display: 'flex'
+                              }}
                             >
-                              {getInitials(phone.name)}
-                            </Avatar>
-                            <Typography
-                              color="textPrimary"
-                              variant="body1"
+                              <Avatar
+                                src={phone.avatarUrl}
+                                sx={{ mr: 2 }}
+                              >
+                                {getInitials(phone.name)}
+                              </Avatar>
+                              <Typography
+                                color="textPrimary"
+                                variant="body1"
+                              >
+                                {phone.name}
+                              </Typography>
+                            </Box>
+                          </TableCell>
+                          <TableCell>
+                            {phone.manufacturer}
+                          </TableCell>
+                          <TableCell>
+                            {phone.color}
+                          </TableCell>
+                          <TableCell>
+                            {phone.price}
+                          </TableCell>
+                          <TableCell>
+                            {phone.screen}
+                          </TableCell>
+                          <TableCell>
+                            {phone.processor}
+                          </TableCell>
+                          <TableCell>
+                            {phone.ram}
+                          </TableCell>
+                          <TableCell align="center">
+                            <Button
+                              component={RouterLink}
+                              color="primary"
+                              to={`/detail/${phone.id}`}
                             >
-                              {phone.name}
-                            </Typography>
-                          </Box>
-                        </TableCell>
-                        <TableCell>
-                          {phone.manufacturer}
-                        </TableCell>
-                        <TableCell>
-                          {phone.color}
-                        </TableCell>
-                        <TableCell>
-                          {phone.price}
-                        </TableCell>
-                        <TableCell>
-                          {phone.screen}
-                        </TableCell>
-                        <TableCell>
-                          {phone.processor}
-                        </TableCell>
-                        <TableCell>
-                          {phone.ram}
-                        </TableCell>
-                        <TableCell align="center">
-                          <Button
-                            component={RouterLink}
-                            color="primary"
-                            to={`/detail/${phone.id}`}
-                          >
-                            <EditIcon />
-                          </Button>
-                          <Button
-                            color="secondary"
-                            onClick={() => handleOpenDialog(phone.id)}
-                          >
-                            <DeleteIcon />
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))
+                              <EditIcon />
+                            </Button>
+                            <Button
+                              color="secondary"
+                              onClick={() => handleOpenDialog(phone.id)}
+                            >
+                              <DeleteIcon />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))
                   ) : (<></>)}
                 </TableBody>
               </Table>

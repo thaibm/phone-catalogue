@@ -6,11 +6,11 @@ import {
 import { createPhone as createPhoneAPI } from 'src/features/redux/api/phoneApi';
 
 export const createNewPhone = createAsyncThunk(
-  'phones/fetchPhoneDetail',
-  async ({ id, payload }, { rejectWithValue }) => {
+  'phones/createNewPhone',
+  async (payload, { rejectWithValue }) => {
     try {
-      const response = await createPhoneAPI({ id, payload });
-      return response;
+      const response = await createPhoneAPI(payload);
+      return response.data;
     } catch (err) {
       console.error(err);
       return rejectWithValue({
