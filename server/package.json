@@ -1,7 +1,7 @@
 {
-  "name": "rest-nestjs-postgres",
+  "name": "phone-catalogue-api",
   "version": "1.0.0",
-  "description": "CrudJS implemented as a REST API, using Nest and Postgres",
+  "description": "phone-catalogue-api",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -19,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crudjs/rest-nestjs-postgres.git"
+    "url": "git+https://github.com/HoangNguyen95/phone-catalogue.git"
   },
   "keywords": [],
   "author": "David Guijarro <guijarro.dav@gmail.com>",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/crudjs/rest-nestjs-postgres/issues"
+    "url": "https://github.com/HoangNguyen95/phone-catalogue/issues"
   },
-  "homepage": "https://github.com/crudjs/rest-nestjs-postgres#readme",
+  "homepage": "https://github.com/HoangNguyen95/phone-catalogue",
   "dependencies": {
     "@nestjs/common": "^7.6.15",
     "@nestjs/config": "^0.6.3",
