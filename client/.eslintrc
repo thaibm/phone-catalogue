@@ -2,10 +2,13 @@
   "root": true,
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
+  "plugins": ["testing-library", "jest"],
   "extends": [
-    "airbnb"
+    "airbnb",
+    "plugin:testing-library/recommended"
   ],
   "settings": {
     "import/resolver": {

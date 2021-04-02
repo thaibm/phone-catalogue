@@ -1,4 +1,4 @@
-import PhoneForm from 'src/features/phone/components/PhoneForm';
+import PhoneForm from 'src/features/phone/components/phoneForm/PhoneForm';
 import { usePhoneCreatePage } from './phoneCreationContext';
 
 const initialValue = {
