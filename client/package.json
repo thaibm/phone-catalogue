@@ -34,6 +34,8 @@
     "@material-ui/icons": "^5.0.0-alpha.28",
     "@material-ui/styles": "^4.10.0",
     "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
     "clsx": "^1.1.1",
@@ -63,6 +65,9 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1"
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-testing-library": "^3.10.2"
   }
 }

@@ -6,7 +6,7 @@ import GlobalStyles from 'src/components/GlobalStyles';
 import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/features/phone/routes';
-import Loading from 'src/components/loading';
+import Loading from 'src/components/loading/loading';
 
 const App = () => {
   const routing = useRoutes(routes);
