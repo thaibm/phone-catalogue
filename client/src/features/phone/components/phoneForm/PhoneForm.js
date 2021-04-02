@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useState } from 'react';
-import PhoneFormUpload from './PhoneFormUpload';
+import PhoneFormUpload from '../PhoneFormUpload';
 
 const PhoneForm = ({ phone, onSubmit }) => {
   const [file, setFile] = useState();

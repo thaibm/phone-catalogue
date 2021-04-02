@@ -110,7 +110,7 @@ const PhoneListResults = ({ ...rest }) => {
                               }}
                             >
                               <Avatar
-                                src={phone.avatarUrl}
+                                src="/static/images/avatars/iphone7.jpg"
                                 sx={{ mr: 2 }}
                               >
                                 {getInitials(phone.name)}
@@ -180,10 +180,10 @@ const PhoneListResults = ({ ...rest }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">Delete it, Are you sure.</DialogTitle>
+        <DialogTitle id="alert-dialog-title">Delete phone!.</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Make sure you want to delete it. You can not undo!
+            Are you sure want to delete this phone!
           </DialogContentText>
         </DialogContent>
         <DialogActions>

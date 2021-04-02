@@ -1,4 +1,4 @@
-import PhoneForm from 'src/features/phone/components/PhoneForm';
+import PhoneForm from 'src/features/phone/components/phoneForm/PhoneForm';
 import { usePhoneDetailPage } from './PhoneDetailContext';
 
 const PhoneProfileDetail = () => {
