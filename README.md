@@ -72,7 +72,7 @@ npm install
 npm run start:dev
 ```
 
-swagger docs: [http://localhost:3000/api/v1/swagger](http://localhost:3000/api/v1/swagger)
+swagger docs: [http://localhost:3001/api/v1/swagger](http://localhost:3001/api/v1/swagger)
 
 ### Client
 
@@ -95,7 +95,17 @@ npm install
 npm run start:dev
 ```
 
+
+swagger docs: [http://localhost:3000](http://localhost:3000)
+
 ## Deployment
+
+## All in one
+
+```bash
+docker compose build
+docker compose up -d
+```
 
 ### Server
 
