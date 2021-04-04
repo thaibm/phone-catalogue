@@ -10,7 +10,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [DBModule, TypeOrmModule.forFeature([PhoneRepository])],
   controllers: [PhonesController],
   providers: [
-    PhoneRepository,
     PhonesService,
   ],
 })
