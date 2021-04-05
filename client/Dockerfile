@@ -28,7 +28,8 @@ RUN npm run build
 
 #
 # ---- Release ----
-FROM nginx:1.13.12-alpine
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
+FROM steebchen/nginx-spa:stable
+COPY --from=build /usr/src/app/build /app
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"] 
+
+CMD ["nginx"]

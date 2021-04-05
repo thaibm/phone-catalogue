@@ -6,6 +6,7 @@ import React, {
   useState
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import { phonesActions, phonesSelectors } from './redux';
 // import { useRouteMatch } from 'react-router-dom';
@@ -18,6 +19,7 @@ const PhoneListPageContext = createContext({
   deletePhone: null
 });
 export const PhoneListPageProvider = ({ children }) => {
+  const { state } = useLocation();
   const phones = useSelector(phonesSelectors.selectPhonesInPhoneList);
   const error = useSelector(phonesSelectors.selectPhonesError);
   const loading = useSelector(phonesSelectors.selectPhonesLoading);
@@ -45,12 +47,13 @@ export const PhoneListPageProvider = ({ children }) => {
       deletePhone
     ]
   );
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
       dispatch(phonesActions.fetchPhone());
     }, 500);
-  }, [dispatch]);
+  }, [dispatch, state]);
 
   return (
     <PhoneListPageContext.Provider value={contextValue}>

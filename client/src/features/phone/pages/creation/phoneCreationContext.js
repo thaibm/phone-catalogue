@@ -2,9 +2,11 @@ import React, {
   createContext,
   useContext,
   useMemo,
+  useCallback,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { phoneActions, phoneSelectors } from './redux';
 
 const PhoneCreatePageContext = createContext({
@@ -14,14 +16,18 @@ const PhoneCreatePageContext = createContext({
   createPhone: null
 });
 export const PhoneCreatePageProvider = ({ children }) => {
+  const navigate = useNavigate();
   const phone = useSelector(phoneSelectors.selectPhoneCreateForm);
   const error = useSelector(phoneSelectors.selectPhoneCreationError);
   const loading = useSelector(phoneSelectors.selectPhoneCreationLoading);
   const dispatch = useDispatch();
 
-  const createPhone = async (values) => {
-    await dispatch(phoneActions.createNewPhone(values));
-  };
+  const createPhone = useCallback(async (values) => {
+    const result = await dispatch(phoneActions.createNewPhone(values));
+    if (!result.error) {
+      navigate('/phones', { replace: true, state: { refresh: true } });
+    }
+  }, [navigate, dispatch]);
 
   const contextValue = useMemo(
     () => ({

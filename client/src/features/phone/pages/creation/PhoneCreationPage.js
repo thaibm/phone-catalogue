@@ -6,7 +6,7 @@ import { PhoneCreatePageProvider } from './phoneCreationContext';
 const PhoneCreatePage = () => (
   <>
     <Helmet>
-      <title>Phone Creation | Material Kit</title>
+      <title>Phone Creation | Phone Catalogue</title>
     </Helmet>
     <Box
       sx={{

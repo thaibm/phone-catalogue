@@ -3,11 +3,11 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  // useState
+  useCallback,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
 import { phoneDetailSelectors, phoneDetailActions } from './redux';
 
 const PhoneDetailPageContext = createContext({
@@ -18,14 +18,18 @@ const PhoneDetailPageContext = createContext({
 });
 export const PhoneDetailPageProvider = ({ children }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const phone = useSelector(phoneDetailSelectors.selectPhoneDetail);
   const error = useSelector(phoneDetailSelectors.selectPhoneDetailError);
   const loading = useSelector(phoneDetailSelectors.selectPhoneDetailLoading);
   const dispatch = useDispatch();
 
-  const handleUpdate = async (values) => {
-    await dispatch(phoneDetailActions.UpdatePhone({ id, payload: values }));
-  };
+  const handleUpdate = useCallback(async (values) => {
+    const result = await dispatch(phoneDetailActions.UpdatePhone({ id, payload: values }));
+    if (!result.error) {
+      navigate('/phones', { replace: true });
+    }
+  }, [dispatch, navigate]);
 
   const contextValue = useMemo(
     () => ({

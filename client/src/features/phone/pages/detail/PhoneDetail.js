@@ -6,7 +6,7 @@ import { PhoneDetailPageProvider } from './PhoneDetailContext';
 const PhoneDetail = () => (
   <>
     <Helmet>
-      <title>Phone Detail | Material Kit</title>
+      <title>Phone Detail | Phone Catalogue</title>
     </Helmet>
     <Box
       sx={{

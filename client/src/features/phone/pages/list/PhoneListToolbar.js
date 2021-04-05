@@ -19,7 +19,7 @@ const PhoneListToolbar = (props) => (
         component={RouterLink}
         color="primary"
         variant="contained"
-        to="/create"
+        to="/phones/create"
       >
         Add phone
       </Button>

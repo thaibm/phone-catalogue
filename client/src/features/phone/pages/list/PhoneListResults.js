@@ -145,7 +145,7 @@ const PhoneListResults = ({ ...rest }) => {
                             <Button
                               component={RouterLink}
                               color="primary"
-                              to={`/detail/${phone.id}`}
+                              to={`/phones/detail/${phone.id}`}
                             >
                               <EditIcon />
                             </Button>

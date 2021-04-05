@@ -7,7 +7,7 @@ import { PhoneListPageProvider } from './phoneListContext';
 const PhoneList = () => (
   <>
     <Helmet>
-      <title>Customers | Material Kit</title>
+      <title>Phones | Phone Catalogue</title>
     </Helmet>
     <Box
       sx={{

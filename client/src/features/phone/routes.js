@@ -1,4 +1,5 @@
 // import { NavLink} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/components/DashboardLayout';
 import PhoneList from 'src/features/phone/pages/list/PhoneList';
 import NotFound from 'src/features/phone/pages/NotFound';
@@ -10,11 +11,12 @@ const routes = [
     path: '',
     element: <DashboardLayout />,
     children: [
-      { path: '', element: <PhoneList /> },
-      { path: '/detail/:id', element: <PhoneDetail /> },
-      { path: '/create', element: <PhoneCreatePage /> },
-      { path: '404', element: <NotFound /> },
-    ]
+      { path: '/phones', element: <PhoneList /> },
+      { path: '/phones/detail/:id', element: <PhoneDetail /> },
+      { path: '/phones/create', element: <PhoneCreatePage /> },
+      { path: '/', exact: true, element: <Navigate to="/phones" /> },
+      { path: '*', element: <NotFound /> },
+    ],
   },
 ];
 
