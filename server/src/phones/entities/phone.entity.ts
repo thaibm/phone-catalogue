@@ -1,16 +1,34 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Phone {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  model: string;
+  name: string;
 
   @Column()
-  brand: string;
+  description: string;
 
   @Column()
-  year: number;
+  price: number;
+
+  @Column()
+  color: string;
+
+  @Column()
+  manufacturer: string;
+
+  @Column()
+  imageFileName: string;
+
+  @Column()
+  screen: string;
+
+  @Column()
+  processor: string;
+
+  @Column()
+  ram: string;
 }

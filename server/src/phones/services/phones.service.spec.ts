@@ -66,10 +66,16 @@ describe('PhonesService', () => {
   describe('findById', () => {
     it('should return a phone', async () => {
       const result: Phone = {
-        brand: 'test',
         id: 1,
-        model: 'test',
-        year: 2021,
+        name: '',
+        manufacturer: '',
+        description: '',
+        color: '',
+        price: 0,
+        imageFileName: '',
+        screen: '',
+        processor: '',
+        ram: '',
       };
       jest.spyOn(phoneRepository, 'findOne').mockResolvedValue(result);
 
@@ -80,10 +86,16 @@ describe('PhonesService', () => {
   describe('create', () => {
     it('should create a phone', async () => {
       const result: Phone = {
-        brand: 'test',
         id: 1,
-        model: 'test',
-        year: 2021,
+        name: '',
+        manufacturer: '',
+        description: '',
+        color: '',
+        price: 0,
+        imageFileName: '',
+        screen: '',
+        processor: '',
+        ram: '',
       };
 
       jest.spyOn(phoneRepository, 'save').mockResolvedValue(result);

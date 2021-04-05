@@ -2,7 +2,7 @@ import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
 import { PhonesModule } from '../src/phones/phones.module';
 import { PhonesService } from '../src/phones/services/phones.service';
-import { NestApplication  } from '@nestjs/core';
+import { NestApplication } from '@nestjs/core';
 
 describe('Phones', () => {
   let app: NestApplication;

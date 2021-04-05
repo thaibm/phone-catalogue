@@ -48,10 +48,16 @@ describe('PhonesController', () => {
   describe('findById', () => {
     it('should return a phone', async () => {
       const result: Phone = {
-        brand: 'test',
         id: 1,
-        model: 'test',
-        year: 2021,
+        name: '',
+        manufacturer: '',
+        description: '',
+        color: '',
+        price: 0,
+        imageFileName: '',
+        screen: '',
+        processor: '',
+        ram: '',
       };
       jest
         .spyOn(phoneService, 'findById')
@@ -64,15 +70,21 @@ describe('PhonesController', () => {
   describe('create', () => {
     it('should create a phone', async () => {
       const result: CreatePhoneDto = {
-        brand: 'test',
-        model: 'test',
-        year: 2021,
+        name: '',
+        manufacturer: '',
+        description: '',
+        color: '',
+        price: 0,
+        imageFileName: '',
+        screen: '',
+        processor: '',
+        ram: '',
       };
       jest
         .spyOn(phoneService, 'create')
-        .mockResolvedValue({...result, id: 1 });
+        .mockResolvedValue({ ...result, id: 1 });
 
-      expect(await phonesController.create(result)).toEqual({...result, id: 1 });
+      expect(await phonesController.create(result)).toEqual({ ...result, id: 1 });
       expect(await phoneService.create).toHaveBeenCalledTimes(1);
       expect(await phoneService.create).toHaveBeenCalledWith(result);
     });

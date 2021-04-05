@@ -8,14 +8,38 @@ export class PhoneDto {
 
   @ApiProperty()
   @IsString()
-  model: string;
+  name: string;
 
   @ApiProperty()
   @IsString()
-  brand: string;
+  manufacturer: string;
 
   @ApiProperty()
   @IsNumber()
-  @Min(1900)
-  year: number;
+  price: number;
+
+  @ApiProperty()
+  @IsString()
+  description: string;
+
+  @ApiProperty()
+  @IsString()
+  color: string;
+
+  @ApiProperty()
+  @IsString()
+  screen: string;
+
+  @ApiProperty()
+  @IsString()
+  imageFileName: string;
+
+  @ApiProperty()
+  @IsString()
+  processor: string;
+
+  @ApiProperty()
+  @IsString()
+  ram: string;
 }
+
