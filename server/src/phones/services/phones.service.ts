@@ -16,7 +16,12 @@ export class PhonesService {
     return await this.phoneRepository.findOne(id);
   }
 
-  async create(phone: Partial<Phone>) {
+  async create(phone: Partial<Phone>): Promise<Phone> {
+    const entity = this.phoneRepository.create(phone);
+    return await this.phoneRepository.save(entity);
+  }
+
+  async update(id: number, phone: Partial<Phone>): Promise<Phone> {
     const entity = this.phoneRepository.create(phone);
     return await this.phoneRepository.save(entity);
   }

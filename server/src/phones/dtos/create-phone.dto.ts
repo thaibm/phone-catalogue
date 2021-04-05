@@ -2,33 +2,40 @@ import { IsNumber, IsString, Min } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreatePhoneDto {
-  @ApiProperty()
-  avatarUrl: string;
 
   @ApiProperty()
-  color: string;
+  @IsString()
+  name: string;
 
   @ApiProperty()
-  description: string;
+  @IsString()
+  manufacturer: string;
 
   @ApiProperty()
-  imageFileName: string;
-
-  @ApiProperty()
-  manufacturer:  string;
-
-  @ApiProperty()
-  name:  string;
-
-  @ApiProperty()
+  @IsNumber()
   price: number;
 
   @ApiProperty()
+  @IsString()
+  description: string;
+
+  @ApiProperty()
+  @IsString()
+  color: string;
+
+  @ApiProperty()
+  @IsString()
+  screen: string;
+
+  @ApiProperty()
+  @IsString()
+  imageFileName: string;
+
+  @ApiProperty()
+  @IsString()
   processor: string;
 
   @ApiProperty()
-  ram:  string;
-
-  @ApiProperty()
-  screen:  string;
+  @IsString()
+  ram: string;
 }

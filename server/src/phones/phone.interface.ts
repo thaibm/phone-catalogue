@@ -1,13 +1,15 @@
 export interface Phone {
   id: number;
-  avatarUrl: string;
-  color: string;
-  description: string;
-  imageFileName: string;
-  manufacturer:  string;
-  name:  string;
-  price: number;
-  processor: string;
-  ram:  string;
-  screen:  string;
+  // model: string;
+  // brand: string;
+  // year: number;
+  name: string,
+  manufacturer: string,
+  description: string,
+  color: string,
+  price: number,
+  imageFileName: string,
+  screen: string,
+  processor: string,
+  ram: string,
 }

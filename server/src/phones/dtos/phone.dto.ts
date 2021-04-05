@@ -7,32 +7,39 @@ export class PhoneDto {
   id: number;
 
   @ApiProperty()
-  avatarUrl: string;
+  @IsString()
+  name: string;
 
   @ApiProperty()
-  color: string;
+  @IsString()
+  manufacturer: string;
 
   @ApiProperty()
-  description: string;
-
-  @ApiProperty()
-  imageFileName: string;
-
-  @ApiProperty()
-  manufacturer:  string;
-
-  @ApiProperty()
-  name:  string;
-
-  @ApiProperty()
+  @IsNumber()
   price: number;
 
   @ApiProperty()
+  @IsString()
+  description: string;
+
+  @ApiProperty()
+  @IsString()
+  color: string;
+
+  @ApiProperty()
+  @IsString()
+  screen: string;
+
+  @ApiProperty()
+  @IsString()
+  imageFileName: string;
+
+  @ApiProperty()
+  @IsString()
   processor: string;
 
   @ApiProperty()
-  ram:  string;
-
-  @ApiProperty()
-  screen:  string;
+  @IsString()
+  ram: string;
 }
+
