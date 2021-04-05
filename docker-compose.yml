@@ -1,0 +1,48 @@
+version: "3"
+services:
+    phone_api:
+      build: ./server
+      image: 'phone_api'
+      environment:
+        NODE_ENV: production
+        DATABASE: ${DATABASE}
+        DATABASE_USER: ${DATABASE_USER}
+        DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+        DATABASE_HOST: ${DATABASE_HOST}
+        DATABASE_PORT: ${DATABASE_PORT}
+      depends_on:
+        - phone_db
+      links:
+        - phone_db
+
+    phone_db:
+      container_name: 'phone_db'
+      image: postgres
+      environment:
+        POSTGRES_USER: ${DATABASE_USER}
+        POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+        POSTGRES_DB: ${DATABASE_USER}
+      ports:
+        - 5432:5432
+
+    phone_client:
+      container_name: phone_client
+      build:
+        context: ./client
+        dockerfile: Dockerfile
+      environment:
+        NODE_ENV: production 
+
+    phone_gateway:
+      container_name: phone_gateway
+      image: nginx
+      depends_on:
+        - phone_api
+        - phone_client
+      links:
+        - phone_api
+        - phone_client
+      ports:
+        - 8080:80
+      volumes:
+        - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
