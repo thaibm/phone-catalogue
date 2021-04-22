@@ -58,12 +58,6 @@
 cd server
 ```
 
-create and modify `.env` file
-
-```bash
-mv .env.example 
-```
-
 ```bash
 npm install
 ```
@@ -81,20 +75,13 @@ swagger docs: [http://localhost:3001/api/v1/swagger](http://localhost:3001/api/v
 cd client
 ```
 
-create and modify `.env` file
-
-```bash
-mv .env.example 
-```
-
 ```bash
 npm install
 ```
 
 ```bash
-npm run start:dev
+npm start
 ```
-
 
 swagger docs: [http://localhost:3000](http://localhost:3000)
 
