@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -7,8 +6,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import About from './components/About';
-import Home from './components/Home';
+import About from './pages/About';
+import Home from './pages/Home';
+import DashboardLayout from './templates/DashboardLayout';
 
 function App() {
   return (
@@ -29,7 +29,8 @@ function App() {
     //   </header>
     // </div>
     <Router>
-      <Switch>
+      <DashboardLayout>
+        <Switch>
           <Route path="/about">
             <About />
           </Route>
@@ -37,6 +38,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+      </DashboardLayout>
     </Router>
   );
 }
