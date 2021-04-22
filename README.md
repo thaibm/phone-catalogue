@@ -107,39 +107,6 @@ docker compose build
 docker compose up -d
 ```
 
-### Server
-
-```bash
-cd server
-```
-
-create and modify `.env` file
-
-```bash
-mv .env.example 
-```
-
-```
-docker-compose build 
-docker-compose up -d
-```
-### Client 
-create and modify `.env` file
-
-```bash
-cd server
-```
-
-```bash
-mv .env.example 
-```
-
-```
-docker-compose build 
-docker-compose up -d
-```
-
-
 ## Testing
 
 ### Server
