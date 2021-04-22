@@ -2,7 +2,7 @@
 
 ## Requirements
 
-[REACT-PhoneCatalog-code-challenge](./docs/REACT-PhoneCatalog-code-challenge)
+[REACT-PhoneCatalog-code-challenge](./docs/REACT-PhoneCatalog-code-challenge.pdf)
 
 ## System Architecture
 
