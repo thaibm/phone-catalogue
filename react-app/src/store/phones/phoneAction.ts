@@ -4,7 +4,7 @@ import API from '../../api/index'
 import { RootActions, RootState } from '../store';
 import { Phone } from './phoneReducer';
 import { Dispatch } from 'redux';
-import { useHistory } from 'react-router-dom';
+import { push } from 'connected-react-router'
 
 export type ThunkResult<R> = ThunkAction<R, RootState, undefined, RootActions>;
 
@@ -103,10 +103,11 @@ const handleCreatePhone = (dispatch: Dispatch<ICreatePhone>) => {
 };
 
 const handleCreatePhoneSuccess = (
-  dispatch: Dispatch<ICreatePhoneSuccess>,
+  dispatch: Dispatch<ICreatePhoneSuccess | any>,
   response: Phone
 ) => {
   dispatch({ type: PhonesActionTypes.CREATE_PHONE_SUCCESS, payload: response });
+  dispatch(push('/'))
 };
 
 const handleCreatePhoneFail = (dispatch: Dispatch<ICreatePhoneFail>, error: any) => {
@@ -117,4 +118,3 @@ const handleCreatePhoneFail = (dispatch: Dispatch<ICreatePhoneFail>, error: any)
 // Phones Action type
 export type PhonesAction = IFetchPhones | IFetchPhonesSuccess | IFetchPhonesFail
   | ICreatePhone | ICreatePhoneSuccess | ICreatePhoneFail;
-  

@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router'
 import About from './pages/About';
 import Home from './pages/Home';
 import PhoneCreation from './pages/PhoneCreation';
 import DashboardLayout from './templates/DashboardLayout';
+import { ConnectedRouter } from 'connected-react-router'
+import { history } from './store/store';
 
 function App() {
   return (
-    <Router>
+    <ConnectedRouter history={history}>
       <DashboardLayout>
         <Switch>
           <Route path="/about">
@@ -22,7 +24,7 @@ function App() {
           </Route>
         </Switch>
       </DashboardLayout>
-    </Router>
+    </ConnectedRouter>
   );
 }
 

@@ -1,6 +1,5 @@
 import { PhonesAction, PhonesActionTypes } from './phoneAction';
 import { Reducer } from 'redux';
-import { mapKeys } from 'lodash';
 
 export interface Phone {
   id?: number;
