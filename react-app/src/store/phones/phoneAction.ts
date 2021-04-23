@@ -88,11 +88,12 @@ interface ICreatePhoneFail {
   error: any;
 }
 
-export const createPhone = (payload: Phone): ThunkResult<void> => async dispatch => {
+export const createPhone = (payload: Phone, successCallback: () => void): ThunkResult<void> => async dispatch => {
   handleCreatePhone(dispatch);
   try {
     const response: AxiosResponse<{ data: Phone }> = await API.post(`v1/phones`, payload);
     handleCreatePhoneSuccess(dispatch, response.data.data);
+    successCallback();
   } catch (error) {
     handleCreatePhoneFail(dispatch, error);
   }
@@ -117,4 +118,3 @@ const handleCreatePhoneFail = (dispatch: Dispatch<ICreatePhoneFail>, error: any)
 // Phones Action type
 export type PhonesAction = IFetchPhones | IFetchPhonesSuccess | IFetchPhonesFail
   | ICreatePhone | ICreatePhoneSuccess | ICreatePhoneFail;
-  

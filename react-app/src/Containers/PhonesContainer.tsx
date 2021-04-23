@@ -5,6 +5,7 @@ import { fetchPhones } from '../store/phones/phoneAction';
 import { Phone } from '../store/phones/phoneReducer';
 import PhoneItem from '../components/PhoneItem';
 import { Grid } from '@material-ui/core';
+import { isArray } from 'lodash';
 
 interface IPhonesContainerProps {
   phones: Phone[];
@@ -18,7 +19,7 @@ const PhonesContainer = ({ phones, fetchPhones }: IPhonesContainerProps) => {
 
   return (
     <Grid container spacing={3}>
-      {phones.map((phone) => (
+      {isArray(phones) && phones.map((phone) => (
         <Grid item xs={12} sm={6} md={4} lg={3} key={phone.id}>
           <PhoneItem phone={phone} />
         </Grid>

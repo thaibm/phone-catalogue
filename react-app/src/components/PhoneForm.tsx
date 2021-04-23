@@ -12,6 +12,7 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 // import PhoneFormUpload from '../PhoneFormUpload';
 
 const PhoneForm = ({ phone, onSubmit }: any) => {
@@ -20,9 +21,11 @@ const PhoneForm = ({ phone, onSubmit }: any) => {
   //   setFile(avatar);
   //   console.log(file);
   // };
-
+  const history = useHistory();
   const onHandleSubmit = (values: any) => {
-    onSubmit(values);
+    onSubmit(values, () => {
+      history.push('/');
+    });
   };
 
   return (
