@@ -1,59 +1,27 @@
-import React, { ReactNode, useState } from 'react';
-import { experimentalStyled } from '@material-ui/core';
+import React from 'react';
+import { Container, experimentalStyled } from '@material-ui/core';
 import DashboardNavbar from '../components/DashboardNavbar';
-import DashboardSidebar from '../components/DashboardSidebar';
 
-const DashboardLayoutRoot = experimentalStyled('div')(
-  ({ theme }) => ({
-    backgroundColor: theme.palette.background.default,
-    display: 'flex',
-    height: '100%',
-    overflow: 'hidden',
-    width: '100%'
-  })
-);
-
-const DashboardLayoutWrapper = experimentalStyled('div')(
-  ({ theme }) => ({
-    display: 'flex',
-    flex: '1 1 auto',
-    overflow: 'hidden',
-    paddingTop: 64,
-    [theme.breakpoints.up('lg')]: {
-      paddingLeft: 256
-    }
-  })
-);
-
-const DashboardLayoutContainer = experimentalStyled('div')({
+const DashboardLayoutRoot = experimentalStyled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
   display: 'flex',
-  flex: '1 1 auto',
-  overflow: 'hidden'
-});
-
-const DashboardLayoutContent = experimentalStyled('div')({
-  flex: '1 1 auto',
   height: '100%',
-  overflow: 'auto'
-});
+  overflow: 'hidden',
+  width: '100%',
+}));
+
+const DashboardLayoutContent = experimentalStyled(Container)(({ theme }) => ({
+  marginTop: 64,
+  paddingTop: 30,
+  paddingBottom: 30,
+}));
 
 const DashboardLayout = ({ children }: { children: JSX.Element }) => {
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-
   return (
     <DashboardLayoutRoot>
-      <DashboardNavbar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <DashboardSidebar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
-      />
-      <DashboardLayoutWrapper>
-        <DashboardLayoutContainer>
-          <DashboardLayoutContent>
-            {children}
-          </DashboardLayoutContent>
-        </DashboardLayoutContainer>
-      </DashboardLayoutWrapper>
+      <DashboardNavbar />
+
+      <DashboardLayoutContent>{children}</DashboardLayoutContent>
     </DashboardLayoutRoot>
   );
 };

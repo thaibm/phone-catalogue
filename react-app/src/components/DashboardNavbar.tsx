@@ -1,24 +1,10 @@
-import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import {
-  AppBar,
-  Badge,
-  Box,
-  Hidden,
-  IconButton,
-  Toolbar
-} from '@material-ui/core';
+import { AppBar, Toolbar } from '@material-ui/core';
 import logo from '../logo.svg';
 
-// TODO update navbar props types
-const DashboardNavbar = ({ onMobileNavOpen, ...rest }: any) => {
-  const [notifications] = useState([]);
-
+const DashboardNavbar = () => {
   return (
-    <AppBar
-      elevation={0}
-      {...rest}
-    >
+    <AppBar elevation={0}>
       <Toolbar>
         <RouterLink to="/">
           <img src={logo} className="App-logo" alt="logo" />
