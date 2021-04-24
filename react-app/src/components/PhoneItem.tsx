@@ -16,34 +16,45 @@ import { useHistory } from 'react-router';
 const PhoneItem = ({
   phone,
   onDelete,
+  onEdit,
+  onClick,
 }: {
   phone: Phone;
-  onDelete: (id: number, successCallback: () => void) => void;
+  onDelete: (id: number) => void;
+  onEdit: (id: number) => void;
+  onClick: (id: number) => void;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const history = useHistory();
-
   const handleDelete = () => {
     handleClose();
-    onDelete(phone.id, () => {
-      history.push('/');
-    });
+    onDelete(phone.id);
   };
 
+  const handleEdit = () => {
+    handleClose();
+    onEdit(phone.id);
+  }
+
+  const handleClickCard = () => {
+    handleClose();
+    onClick(phone.id);
+  }
+
   return (
-    <Card sx={{ cursor: 'pointer' }}>
+    <Card sx={{ cursor: 'pointer' }} onClick={handleClickCard}>
       <CardHeader
         action={
           <>
-            <IconButton aria-label="settings" onClick={handleClick}>
+            <IconButton aria-label="settings" onClick={handleOpenMenu}>
               <MoreVertIcon />
             </IconButton>
             <Menu
@@ -54,7 +65,7 @@ const PhoneItem = ({
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Edit</MenuItem>
+              <MenuItem onClick={handleEdit}>Edit</MenuItem>
               <MenuItem sx={{ color: 'red' }} onClick={handleDelete}>
                 Delete
               </MenuItem>

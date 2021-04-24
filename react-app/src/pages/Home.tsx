@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Typography } from '@material-ui/core';
-import PhonesContainer from '../Containers/PhonesContainer';
+import PhonesContainer from '../containers/PhonesContainer';
 import { AddCircle } from '@material-ui/icons';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { PageHeader } from '../components/PageHeader';

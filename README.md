@@ -62,6 +62,10 @@ cd server
 npm install
 ```
 
+```
+npm install -g @nestjs/cli
+```
+
 ```bash
 npm run start:dev
 ```

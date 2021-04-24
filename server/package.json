@@ -41,6 +41,7 @@
     "body-parser": "^1.19.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "nest": "^0.1.6",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.7",

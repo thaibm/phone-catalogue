@@ -17,7 +17,7 @@ const initialPhone = {
   ram: null,
 };
 
-const PhoneCreation = ({ createPhone }: any) => {
+const PhoneCreationContainer = ({ createPhone }: any) => {
   return (
     <>
       <PageHeader title="Create New Phone"></PageHeader>
@@ -26,4 +26,4 @@ const PhoneCreation = ({ createPhone }: any) => {
   );
 };
 
-export default connect(null, { createPhone })(PhoneCreation);
+export default connect(null, { createPhone })(PhoneCreationContainer);
