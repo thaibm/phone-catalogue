@@ -5,7 +5,7 @@ import PhoneForm from '../components/PhoneForm';
 import { Phone } from '../store/phones/phoneReducer';
 import { createPhone } from '../store/phones/phoneAction';
 
-const initialPhone: Phone = {
+const initialPhone = {
   name: '',
   manufacturer: '',
   description: '',

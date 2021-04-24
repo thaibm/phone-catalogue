@@ -21,9 +21,9 @@ export enum PhonesActionTypes {
   // EDIT_PHONE = 'EDIT_PHONE',
   // EDIT_PHONE_SUCCESS = 'EDIT_PHONE_SUCCESS',
   // EDIT_PHONE_FAIL = 'EDIT_PHONE_FAIL',
-  // DELETE_PHONE = 'DELETE_PHONE',
-  // DELETE_PHONE_SUCCESS = 'DELETE_PHONE_SUCCESS',
-  // DELETE_PHONE_FAIL = 'DELETE_PHONE_FAIL'
+  DELETE_PHONE = 'DELETE_PHONE',
+  DELETE_PHONE_SUCCESS = 'DELETE_PHONE_SUCCESS',
+  DELETE_PHONE_FAIL = 'DELETE_PHONE_FAIL'
 }
 
 // Fetch Phones
@@ -91,8 +91,8 @@ interface ICreatePhoneFail {
 export const createPhone = (payload: Phone, successCallback: () => void): ThunkResult<void> => async dispatch => {
   handleCreatePhone(dispatch);
   try {
-    const response: AxiosResponse<{ data: Phone }> = await API.post(`v1/phones`, payload);
-    handleCreatePhoneSuccess(dispatch, response.data.data);
+    const response: AxiosResponse<Phone> = await API.post(`v1/phones`, payload);
+    handleCreatePhoneSuccess(dispatch, response.data);
     successCallback();
   } catch (error) {
     handleCreatePhoneFail(dispatch, error);
@@ -114,7 +114,40 @@ const handleCreatePhoneFail = (dispatch: Dispatch<ICreatePhoneFail>, error: any)
   dispatch({ type: PhonesActionTypes.CREATE_PHONE_FAIL, error });
 };
 
+// DELETE POST
+
+interface IDeletePhone {
+  type: PhonesActionTypes.DELETE_PHONE;
+}
+
+interface IDeletePhoneSuccess {
+  type: PhonesActionTypes.DELETE_PHONE_SUCCESS;
+  payload: number;
+}
+
+interface IDeletePhoneFail {
+  type: PhonesActionTypes.DELETE_PHONE_FAIL;
+}
+
+export const deletePhone = (
+  deletedId: number,
+  successCallback: () => void
+): ThunkResult<void> => async dispatch => {
+  dispatch({ type: PhonesActionTypes.DELETE_PHONE });
+  try {
+    await API.delete(`v1/phones/${deletedId}`);
+    dispatch({
+      type: PhonesActionTypes.DELETE_PHONE_SUCCESS,
+      payload: deletedId
+    });
+    successCallback();
+  } catch (e) {
+    dispatch({ type: PhonesActionTypes.DELETE_PHONE_FAIL });
+  }
+};
+
 
 // Phones Action type
 export type PhonesAction = IFetchPhones | IFetchPhonesSuccess | IFetchPhonesFail
-  | ICreatePhone | ICreatePhoneSuccess | ICreatePhoneFail;
+  | ICreatePhone | ICreatePhoneSuccess | ICreatePhoneFail
+  | IDeletePhone | IDeletePhoneSuccess | IDeletePhoneFail;

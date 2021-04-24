@@ -1,9 +1,8 @@
 import { PhonesAction, PhonesActionTypes } from './phoneAction';
 import { Reducer } from 'redux';
-import { mapKeys } from 'lodash';
 
 export interface Phone {
-  id?: number;
+  id: number;
   name: string;
   manufacturer: string;
   description: string;
@@ -35,7 +34,7 @@ export const PhonesReducer: Reducer<PhonesState, PhonesAction> = (
     // case PhonesActionTypes.FETCH_Phone:
     case PhonesActionTypes.FETCH_PHONES:
     case PhonesActionTypes.CREATE_PHONE:
-      // case PhonesActionTypes.EDIT_Phone:
+    // case PhonesActionTypes.EDIT_PHONE:
       return { ...state, loading: true };
 
     // case PhonesActionTypes.FETCH_Phone_FAIL:
@@ -48,7 +47,7 @@ export const PhonesReducer: Reducer<PhonesState, PhonesAction> = (
       console.log(`action`, action);
       return {
         ...state,
-        items: { ...state.items, action },
+        items: [...state.items, action.payload],
         loading: false
       };
 
@@ -59,11 +58,11 @@ export const PhonesReducer: Reducer<PhonesState, PhonesAction> = (
         error: null
       };
 
-    // case PhonesActionTypes.DELETE_Phone_SUCCESS:
-    //   return {
-    //     ...state,
-    //     items: { ..._.omit(state.items, action.payload) }
-    //   };
+    case PhonesActionTypes.DELETE_PHONE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload)
+      };
 
     default:
       return state;
