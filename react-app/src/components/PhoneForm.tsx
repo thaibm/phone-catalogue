@@ -11,53 +11,40 @@ import {
 } from '@material-ui/core';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import { useState } from 'react';
-import { useHistory } from 'react-router';
-// import PhoneFormUpload from '../PhoneFormUpload';
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string()
+    .typeError('name must be string!')
+    .max(50)
+    .required('name is required'),
+  description: Yup.string()
+    .max(1000)
+    .required('Description is required'),
+  manufacturer: Yup.string()
+    .max(255)
+    .required('Manufacturer is required'),
+  color: Yup.string().max(255).required('Color is required'),
+  price: Yup.string().max(255).required('Price is required'),
+  processor: Yup.string()
+    .max(255)
+    .required('Processor is required'),
+  ram: Yup.string().max(255).required('Ram is required'),
+  screen: Yup.string().max(255).required('Screen is required'),
+});
 
 const PhoneForm = ({ phone, onSubmit }: any) => {
-  // const [file, setFile] = useState();
-  // const onChangeFile = (avatar) => {
-  //   setFile(avatar);
-  //   console.log(file);
-  // };
-  const history = useHistory();
   const onHandleSubmit = (values: any) => {
-    onSubmit(values, () => {
-      history.push('/');
-    });
+    onSubmit(values);
   };
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={3}>
-        {/* <PhoneFormUpload
-          avatar={phone?.avatarUrl}
-          handleChangeFile={onChangeFile}
-        /> */}
         <Grid item lg={8} md={6} xs={12}>
           <Formik
             initialValues={phone}
             enableReinitialize
-            validationSchema={Yup.object().shape({
-              name: Yup.string()
-                .typeError('name must be string!')
-                .max(50)
-                .required('name is required'),
-              description: Yup.string()
-                .max(255)
-                .required('Description is required'),
-              manufacturer: Yup.string()
-                .max(255)
-                .required('Manufacturer is required'),
-              color: Yup.string().max(255).required('Color is required'),
-              price: Yup.string().max(255).required('Price is required'),
-              processor: Yup.string()
-                .max(255)
-                .required('Processor is required'),
-              ram: Yup.string().max(255).required('Ram is required'),
-              screen: Yup.string().max(255).required('Screen is required'),
-            })}
+            validationSchema={validationSchema}
             onSubmit={onHandleSubmit}
           >
             {({
@@ -65,7 +52,6 @@ const PhoneForm = ({ phone, onSubmit }: any) => {
               handleBlur,
               handleChange,
               handleSubmit,
-              // isSubmitting,
               touched,
               values,
             }) => (

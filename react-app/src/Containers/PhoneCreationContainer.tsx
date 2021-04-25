@@ -4,6 +4,7 @@ import { PageHeader } from '../components/PageHeader';
 import PhoneForm from '../components/PhoneForm';
 import { Phone } from '../store/phones/phoneReducer';
 import { createPhone } from '../store/phones/phoneAction';
+import { useHistory } from 'react-router';
 
 const initialPhone = {
   name: '',
@@ -18,10 +19,18 @@ const initialPhone = {
 };
 
 const PhoneCreationContainer = ({ createPhone }: any) => {
+  const history = useHistory();
+
+  const handleSubmit = (value: Phone) => {
+    createPhone(value, () => {
+      history.push('/');
+    })
+  }
+
   return (
     <>
       <PageHeader title="Create New Phone"></PageHeader>
-      <PhoneForm phone={initialPhone} onSubmit={createPhone}></PhoneForm>
+      <PhoneForm phone={initialPhone} onSubmit={handleSubmit}></PhoneForm>
     </>
   );
 };

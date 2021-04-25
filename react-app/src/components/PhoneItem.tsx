@@ -11,7 +11,6 @@ import {
 import React from 'react';
 import { Phone } from '../store/phones/phoneReducer';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useHistory } from 'react-router';
 
 const PhoneItem = ({
   phone,
@@ -26,26 +25,30 @@ const PhoneItem = ({
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (event: React.MouseEvent<Element>) => {
+    event.stopPropagation();
     setAnchorEl(null);
   };
 
-  const handleDelete = () => {
-    handleClose();
+  const handleDelete = (event: React.MouseEvent<HTMLLIElement>) => {
+    event.stopPropagation();
+    handleClose(event);
     onDelete(phone.id);
   };
 
-  const handleEdit = () => {
-    handleClose();
+  const handleEdit = (event: React.MouseEvent<HTMLLIElement>) => {
+    event.stopPropagation();
+    handleClose(event);
     onEdit(phone.id);
   }
 
-  const handleClickCard = () => {
-    handleClose();
+  const handleClickCard = (event: React.MouseEvent<Element>) => {
+    handleClose(event);
     onClick(phone.id);
   }
 
@@ -87,7 +90,7 @@ const PhoneItem = ({
           {phone.price}&#36;
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {phone.description}
+          {phone.description.length > 123 ? phone.description.substring(0, 120) + '...' : phone.description}
         </Typography>
       </CardContent>
     </Card>

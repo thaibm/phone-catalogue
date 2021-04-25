@@ -17,7 +17,7 @@ export const PageHeader = ({
 }) => {
   return (
     <PageHeaderWrapper>
-      <Typography variant="h1" sx={{ fontSize: '3rem', fontWeight: 400 }}>
+      <Typography variant="h1" sx={{ fontSize: '2rem', fontWeight: 400 }}>
         {title}
       </Typography>
       {children}

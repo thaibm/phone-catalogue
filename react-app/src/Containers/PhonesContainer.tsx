@@ -4,8 +4,9 @@ import { RootState } from '../store/store';
 import { fetchPhones, deletePhone } from '../store/phones/phoneAction';
 import { Phone } from '../store/phones/phoneReducer';
 import PhoneItem from '../components/PhoneItem';
-import { Grid } from '@material-ui/core';
+import { CircularProgress, Grid } from '@material-ui/core';
 import { useHistory } from 'react-router';
+import Loading from '../components/Loading';
 
 interface IPhonesContainerProps {
   phones: Phone[];
@@ -13,7 +14,7 @@ interface IPhonesContainerProps {
   fetchPhones: () => void;
   deletePhone: (id: number, successCallback: () => void) => void;
 }
-const PhonesContainer = ({ phones, fetchPhones, deletePhone }: IPhonesContainerProps) => {
+const PhonesContainer = ({ phones, loading, fetchPhones, deletePhone }: IPhonesContainerProps) => {
   useEffect(() => {
     fetchPhones();
   }, [fetchPhones]);
@@ -26,6 +27,8 @@ const PhonesContainer = ({ phones, fetchPhones, deletePhone }: IPhonesContainerP
   const viewDetails = (id: number) => {
     history.push('/phone/details/' + id);
   }
+
+  if (loading) return <Loading></Loading>;
 
   return (
     <Grid container spacing={3}>

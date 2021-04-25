@@ -4,7 +4,6 @@ import API from '../../api/index'
 import { RootActions, RootState } from '../store';
 import { Phone } from './phoneReducer';
 import { Dispatch } from 'redux';
-import { useHistory } from 'react-router-dom';
 
 export type ThunkResult<R> = ThunkAction<R, RootState, undefined, RootActions>;
 
