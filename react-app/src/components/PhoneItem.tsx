@@ -25,7 +25,7 @@ const PhoneItem = ({
 }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  
+
   const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
@@ -45,19 +45,19 @@ const PhoneItem = ({
     event.stopPropagation();
     handleClose(event);
     onEdit(phone.id);
-  }
+  };
 
   const handleClickCard = (event: React.MouseEvent<Element>) => {
     handleClose(event);
     onClick(phone.id);
-  }
+  };
 
   return (
     <Card sx={{ cursor: 'pointer' }} onClick={handleClickCard}>
       <CardHeader
         action={
           <>
-            <IconButton aria-label="settings" onClick={handleOpenMenu}>
+            <IconButton aria-label='settings' onClick={handleOpenMenu}>
               <MoreVertIcon />
             </IconButton>
             <Menu
@@ -81,16 +81,18 @@ const PhoneItem = ({
 
       <CardMedia
         sx={{ height: 210 }}
-        image="/static/images/phone-default.jpg"
-        title="Phone"
+        image='/static/images/phone-default.jpg'
+        title='Phone'
       />
 
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant='h5' component='div'>
           {phone.price}&#36;
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {phone.description.length > 123 ? phone.description.substring(0, 120) + '...' : phone.description}
+        <Typography variant='body2' color='text.secondary'>
+          {phone.description.length > 123
+            ? phone.description.substring(0, 120) + '...'
+            : phone.description}
         </Typography>
       </CardContent>
     </Card>

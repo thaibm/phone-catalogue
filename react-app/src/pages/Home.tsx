@@ -8,15 +8,15 @@ import { PageHeader } from '../components/PageHeader';
 const Home = () => {
   return (
     <>
-      <PageHeader title="Phone List">
+      <PageHeader title='Phone List'>
         <Button
           component={RouterLink}
-          color="primary"
-          variant="contained"
-          to="/phone/create"
+          color='primary'
+          variant='contained'
+          to='/phone/create'
         >
           <AddCircle sx={{ marginRight: '5px' }}></AddCircle>
-          <Typography variant="button">Add Phone</Typography>
+          <Typography variant='button'>Add Phone</Typography>
         </Button>
       </PageHeader>
 

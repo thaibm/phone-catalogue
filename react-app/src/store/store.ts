@@ -9,7 +9,7 @@ export interface RootState {
 }
 
 const rootReducer = combineReducers<RootState>({
-  phones: PhonesReducer
+  phones: PhonesReducer,
 });
 
 export type RootActions = PhonesAction; // | CommentsAction | etc.

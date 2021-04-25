@@ -24,12 +24,12 @@ const PhoneCreationContainer = ({ createPhone }: any) => {
   const handleSubmit = (value: Phone) => {
     createPhone(value, () => {
       history.push('/');
-    })
-  }
+    });
+  };
 
   return (
     <>
-      <PageHeader title="Create New Phone"></PageHeader>
+      <PageHeader title='Create New Phone'></PageHeader>
       <PhoneForm phone={initialPhone} onSubmit={handleSubmit}></PhoneForm>
     </>
   );

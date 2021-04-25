@@ -15,23 +15,23 @@ const PhoneDetailsContainer = ({ phone, fetchPhone, loading }: any) => {
 
   useEffect(() => {
     fetchPhone(id);
-  }, [fetchPhone, id])
+  }, [fetchPhone, id]);
 
   if (loading || !phone) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <>
-      <PageHeader title="Phone Details">
+      <PageHeader title='Phone Details'>
         <Button
           component={RouterLink}
-          color="primary"
-          variant="contained"
-          to={"/phone/update/" + phone?.id}
+          color='primary'
+          variant='contained'
+          to={'/phone/update/' + phone?.id}
         >
           <Edit sx={{ marginRight: '5px' }}></Edit>
-          <Typography variant="button">Edit Phone</Typography>
+          <Typography variant='button'>Edit Phone</Typography>
         </Button>
       </PageHeader>
       <PhoneDetails phone={phone}></PhoneDetails>

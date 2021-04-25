@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { ThunkAction } from 'redux-thunk';
-import API from '../../api/index'
+import API from '../../api/index';
 import { RootActions, RootState } from '../store';
 import { Phone } from './phoneReducer';
 import { Dispatch } from 'redux';
@@ -22,7 +22,7 @@ export enum PhonesActionTypes {
   EDIT_PHONE_FAIL = 'EDIT_PHONE_FAIL',
   DELETE_PHONE = 'DELETE_PHONE',
   DELETE_PHONE_SUCCESS = 'DELETE_PHONE_SUCCESS',
-  DELETE_PHONE_FAIL = 'DELETE_PHONE_FAIL'
+  DELETE_PHONE_FAIL = 'DELETE_PHONE_FAIL',
 }
 
 // Fetch Phones
@@ -40,10 +40,12 @@ interface IFetchPhonesFail {
   error: any;
 }
 
-export const fetchPhones = (): ThunkResult<void> => async dispatch => {
+export const fetchPhones = (): ThunkResult<void> => async (dispatch) => {
   handleFetchPhones(dispatch);
   try {
-    const response: AxiosResponse<{ data: Phone[] }> = await API.get('v1/phones');
+    const response: AxiosResponse<{ data: Phone[] }> = await API.get(
+      'v1/phones'
+    );
     handleFetchPhonesSuccess(dispatch, response.data.data);
   } catch (error) {
     handleFetchPhonesFail(dispatch, error);
@@ -60,14 +62,17 @@ export const handleFetchPhonesSuccess = (
 ) => {
   dispatch({
     type: PhonesActionTypes.FETCH_PHONES_SUCCESS,
-    payload: response
+    payload: response,
   });
 };
 
-export const handleFetchPhonesFail = (dispatch: Dispatch<IFetchPhonesFail>, error: any) => {
+export const handleFetchPhonesFail = (
+  dispatch: Dispatch<IFetchPhonesFail>,
+  error: any
+) => {
   dispatch({
     type: PhonesActionTypes.FETCH_PHONES_FAIL,
-    error
+    error,
   });
 };
 
@@ -87,7 +92,10 @@ interface ICreatePhoneFail {
   error: any;
 }
 
-export const createPhone = (payload: Phone, successCallback: () => void): ThunkResult<void> => async dispatch => {
+export const createPhone = (
+  payload: Phone,
+  successCallback: () => void
+): ThunkResult<void> => async (dispatch) => {
   handleCreatePhone(dispatch);
   try {
     const response: AxiosResponse<Phone> = await API.post(`v1/phones`, payload);
@@ -109,7 +117,10 @@ const handleCreatePhoneSuccess = (
   dispatch({ type: PhonesActionTypes.CREATE_PHONE_SUCCESS, payload: response });
 };
 
-const handleCreatePhoneFail = (dispatch: Dispatch<ICreatePhoneFail>, error: any) => {
+const handleCreatePhoneFail = (
+  dispatch: Dispatch<ICreatePhoneFail>,
+  error: any
+) => {
   dispatch({ type: PhonesActionTypes.CREATE_PHONE_FAIL, error });
 };
 
@@ -131,13 +142,13 @@ interface IDeletePhoneFail {
 export const deletePhone = (
   deletedId: number,
   successCallback: () => void
-): ThunkResult<void> => async dispatch => {
+): ThunkResult<void> => async (dispatch) => {
   dispatch({ type: PhonesActionTypes.DELETE_PHONE });
   try {
     await API.delete(`v1/phones/${deletedId}`);
     dispatch({
       type: PhonesActionTypes.DELETE_PHONE_SUCCESS,
-      payload: deletedId
+      payload: deletedId,
     });
     successCallback();
   } catch (e) {
@@ -161,10 +172,14 @@ interface IFetchPhoneFail {
   error: any;
 }
 
-export const fetchPhone = (id: number): ThunkResult<void> => async dispatch => {
+export const fetchPhone = (id: number): ThunkResult<void> => async (
+  dispatch
+) => {
   handleFetchPhone(dispatch);
   try {
-    const response: AxiosResponse<{ data: Phone }> = await API.get(`v1/phones/${id}`);
+    const response: AxiosResponse<{ data: Phone }> = await API.get(
+      `v1/phones/${id}`
+    );
     handleFetchPhoneSuccess(dispatch, response.data.data);
   } catch (e) {
     handleFetchPhoneFail(dispatch, e);
@@ -181,14 +196,17 @@ const handleFetchPhoneSuccess = (
 ) => {
   dispatch({
     type: PhonesActionTypes.FETCH_PHONE_SUCCESS,
-    payload: response
+    payload: response,
   });
 };
 
-const handleFetchPhoneFail = (dispatch: Dispatch<IFetchPhoneFail>, error: any) => {
+const handleFetchPhoneFail = (
+  dispatch: Dispatch<IFetchPhoneFail>,
+  error: any
+) => {
   dispatch({
     type: PhonesActionTypes.FETCH_PHONE_FAIL,
-    error
+    error,
   });
 };
 
@@ -211,7 +229,7 @@ interface IEditPhoneFail {
 export const editPhone = (
   editedPhone: Phone,
   successCallback: () => void
-): ThunkResult<void> => async dispatch => {
+): ThunkResult<void> => async (dispatch) => {
   handleEditPhone(dispatch);
   try {
     const response: AxiosResponse<Phone> = await API.put(
@@ -233,16 +251,32 @@ const handleEditPhoneSuccess = (
   dispatch: Dispatch<IEditPhoneSuccess>,
   editedPhone: Phone
 ) => {
-  dispatch({ type: PhonesActionTypes.EDIT_PHONE_SUCCESS, payload: editedPhone });
+  dispatch({
+    type: PhonesActionTypes.EDIT_PHONE_SUCCESS,
+    payload: editedPhone,
+  });
 };
 
-const handleEditPhoneFail = (dispatch: Dispatch<IEditPhoneFail>, error: any) => {
+const handleEditPhoneFail = (
+  dispatch: Dispatch<IEditPhoneFail>,
+  error: any
+) => {
   dispatch({ type: PhonesActionTypes.EDIT_PHONE_FAIL, error });
 };
 
 // Phones Action type
-export type PhonesAction = IFetchPhones | IFetchPhonesSuccess | IFetchPhonesFail
-  | ICreatePhone | ICreatePhoneSuccess | ICreatePhoneFail
-  | IDeletePhone | IDeletePhoneSuccess | IDeletePhoneFail
-  | IFetchPhone | IFetchPhoneSuccess | IFetchPhoneFail
-  | IEditPhone | IEditPhoneFail;
+export type PhonesAction =
+  | IFetchPhones
+  | IFetchPhonesSuccess
+  | IFetchPhonesFail
+  | ICreatePhone
+  | ICreatePhoneSuccess
+  | ICreatePhoneFail
+  | IDeletePhone
+  | IDeletePhoneSuccess
+  | IDeletePhoneFail
+  | IFetchPhone
+  | IFetchPhoneSuccess
+  | IFetchPhoneFail
+  | IEditPhone
+  | IEditPhoneFail;

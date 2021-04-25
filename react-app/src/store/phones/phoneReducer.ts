@@ -18,14 +18,14 @@ export interface PhonesState {
   items: Phone[];
   currentItem?: Phone;
   loading: boolean;
-  error: String | null
+  error: String | null;
 }
 
 const initialState = {
   items: [],
   currentItem: {} as Phone,
   loading: false,
-  error: null
+  error: null,
 };
 
 export const PhonesReducer: Reducer<PhonesState, PhonesAction> = (
@@ -49,27 +49,27 @@ export const PhonesReducer: Reducer<PhonesState, PhonesAction> = (
       return {
         ...state,
         items: [...state.items, action.payload],
-        loading: false
+        loading: false,
       };
-      
+
     case PhonesActionTypes.FETCH_PHONE_SUCCESS:
       return {
         ...state,
         currentItem: action.payload,
-        loading: false
-      }
+        loading: false,
+      };
 
     case PhonesActionTypes.FETCH_PHONES_SUCCESS:
       return {
         items: [...action.payload],
         loading: false,
-        error: null
+        error: null,
       };
 
     case PhonesActionTypes.DELETE_PHONE_SUCCESS:
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload)
+        items: state.items.filter((item) => item.id !== action.payload),
       };
 
     default:

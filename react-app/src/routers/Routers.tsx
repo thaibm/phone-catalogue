@@ -1,14 +1,13 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import About from './pages/About';
-import Home from './pages/Home';
-import PhoneCreationContainer from './containers/PhoneCreationContainer';
-import DashboardLayout from './templates/DashboardLayout';
-import PhoneUpdateContainer from './containers/PhoneUpdateContainer';
-import PhoneDetailsContainer from './containers/PhoneDetailsContainer';
+import About from '../pages/About';
+import Home from '../pages/Home';
+import PhoneCreationContainer from '../containers/PhoneCreationContainer';
+import DashboardLayout from '../templates/DashboardLayout';
+import PhoneUpdateContainer from '../containers/PhoneUpdateContainer';
+import PhoneDetailsContainer from '../containers/PhoneDetailsContainer';
 
-function App() {
+function Routers() {
   return (
     <Router>
       <DashboardLayout>
@@ -34,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default Routers;

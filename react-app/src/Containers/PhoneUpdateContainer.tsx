@@ -20,20 +20,24 @@ const PhoneUpdateContainer = ({ phone, fetchPhone, editPhone }: any) => {
   const handleSubmit = (value: Phone) => {
     editPhone(value, () => {
       history.push('/');
-    })
-  }
+    });
+  };
 
   return (
     <>
-      <PageHeader title="Update Phone"></PageHeader>
+      <PageHeader title='Update Phone'></PageHeader>
       <PhoneForm phone={phone} onSubmit={handleSubmit}></PhoneForm>
     </>
   );
 };
+
 const mapStateToProps = (state: RootState) => {
   return {
     phone: state.phones.currentItem,
     loading: state.phones.loading,
   };
 };
-export default connect(mapStateToProps, { fetchPhone, editPhone })(PhoneUpdateContainer);
+
+export default connect(mapStateToProps, { fetchPhone, editPhone })(
+  PhoneUpdateContainer
+);
