@@ -11,6 +11,11 @@ npm install
 npm start
 ```
 
+### Testing
+```
+npm run test
+```
+
 ## Project Structure
 ```
 ├── public                     # public static assets (directly copied)
@@ -18,6 +23,9 @@ npm start
 │   ├── api                    # api service (Axios instance)
 │   ├── assets                 # module assets like fonts, images
 │   ├── components             # global dumb components
+│   │   ├── __test__           # test folder contains testing file
+│   │   └── dumb component...
+│   │
 │   ├── containers             # global container components (we have logic and Cause Side-Effects here)
 │   ├── pages                  # app pages
 │   ├── routers                # routers
@@ -31,4 +39,3 @@ npm start
 ├── tsconfig.json              # typescript config
 └── README.md                  
 ```
-

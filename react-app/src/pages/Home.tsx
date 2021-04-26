@@ -22,7 +22,7 @@ const Home = () => {
 
       <PhonesContainer></PhonesContainer>
 
-      {/* ExampleContainer | etc.. */}
+      {/* We can add more ExampleContainer | etc.. */}
     </>
   );
 };
