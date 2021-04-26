@@ -11,7 +11,7 @@ export interface Phone {
   imageFileName: string;
   screen: string;
   processor: string;
-  ram: number | null;
+  ram: number | string | null;
 }
 
 export interface PhonesState {

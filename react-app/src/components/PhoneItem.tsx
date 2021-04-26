@@ -57,7 +57,7 @@ const PhoneItem = ({
       <CardHeader
         action={
           <>
-            <IconButton aria-label='settings' onClick={handleOpenMenu}>
+            <IconButton aria-label="actions" onClick={handleOpenMenu}>
               <MoreVertIcon />
             </IconButton>
             <Menu
@@ -67,9 +67,16 @@ const PhoneItem = ({
               MenuListProps={{
                 'aria-labelledby': 'basic-button',
               }}
+              aria-label="actions-menu"
             >
-              <MenuItem onClick={handleEdit}>Edit</MenuItem>
-              <MenuItem sx={{ color: 'red' }} onClick={handleDelete}>
+              <MenuItem aria-label="edit-action" onClick={handleEdit}>
+                Edit
+              </MenuItem>
+              <MenuItem
+                aria-label="delete-action"
+                sx={{ color: 'red' }}
+                onClick={handleDelete}
+              >
                 Delete
               </MenuItem>
             </Menu>
@@ -81,15 +88,15 @@ const PhoneItem = ({
 
       <CardMedia
         sx={{ height: 210 }}
-        image='/static/images/phone-default.jpg'
-        title='Phone'
+        image="/static/images/phone-default.jpg"
+        title="Phone"
       />
 
       <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
+        <Typography gutterBottom variant="h5" component="div">
           {phone.price}&#36;
         </Typography>
-        <Typography variant='body2' color='text.secondary'>
+        <Typography variant="body2" color="text.secondary">
           {phone.description.length > 123
             ? phone.description.substring(0, 120) + '...'
             : phone.description}
