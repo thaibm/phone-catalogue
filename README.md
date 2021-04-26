@@ -4,34 +4,6 @@
 
 [REACT-PhoneCatalog-code-challenge](./docs/REACT-PhoneCatalog-code-challenge.pdf)
 
-## System Architecture
-
-```
-                ┌─────────────────────────────────┐
-                │                                 │
-                │                                 │
-                │             GATEWAY             │
-                │                                 │
-                │                                 │
-                │                                 │
-                └───────┬─────────────────┬───────┘
-                        │                 │
-                        │                 │
-                        │                 │
-                        │                 │
-                        │                 │
-                        │                 │
-                        │                 │
-             ┌──────────┴────────┐   ┌────┴───────────────┐
-             │                   │   │                    │
-             │                   │   │                    │
-             │                   │   │                    │
-             │     SERVER        │   │       CLIENT       │
-             │                   │   │                    │
-             │                   │   │                    │
-             │                   │   │                    │
-             └───────────────────┘   └────────────────────┘
-```
 ### Compoments
 - **Gateway**: ***Nginx*** proxy to forwarding request form client
 - **Server**:  ***Nestjs*** server and **PostgreSQL**  database to process request and store data
